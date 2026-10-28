@@ -53,7 +53,8 @@ nav.main a:hover{color:#fff}
 @media (max-width:860px){nav.main{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap}nav.main a{white-space:nowrap}}
 /* hero */
 #bg{position:fixed;inset:0;z-index:-1;background:var(--ink);overflow:hidden}
-#bg video{width:100%;height:100%;object-fit:cover;display:block}
+#bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 1.2s ease}
+#bg video.on{opacity:1}
 .hero{background:rgba(14,26,43,.58);color:#fff;overflow:hidden}
 .hero h1,.hero p.sub{text-shadow:0 2px 16px rgba(0,0,0,.35)}
 .below{background:var(--ground);padding-bottom:1px}
@@ -105,7 +106,7 @@ footer a{color:#D6E0EC;padding:10px 0}
 </head>
 <body>
 <!-- Arka plan videosu: bomonti.mp4 (ve isteğe bağlı bomonti.jpg) dosyalarını index.html ile aynı klasöre koyun -->
-<div id="bg" aria-hidden="true"><video autoplay muted loop playsinline preload="auto" poster="bomonti.jpg"><source src="bomonti.mp4" type="video/mp4"></video></div>
+<div id="bg" aria-hidden="true"><video id="bgA" autoplay muted playsinline preload="auto" poster="bomonti.jpg" src="bomonti.mp4"></video><video id="bgB" muted playsinline preload="auto"></video></div>
 <div id="app"></div>
 <script>
 /* ---- Minimal runtime: the page's data and logic live in Component below ---- */
@@ -750,6 +751,30 @@ function render() {
   document.getElementById('app').innerHTML = header(v) + '<main>' + hero(v) + '<div class="below">' + quick(v) + weather(v) + notices(v) + transit(v) + shops(v) + life(v) + events(v) + neighbours(v) + history(v) + '<div style="height:88px"></div></div></main>' + foot(v);
   if (focusedLang) { const b = document.querySelector('.lang-btn'); if (b) b.focus(); }
 }
+/* ---- background video playlist: add more files here (bomonti2.mp4, bomonti3.mp4 …) ---- */
+const BG_VIDEOS = ['bomonti.mp4', 'bomonti2.mp4'];
+(function bgPlaylist() {
+  const A = document.getElementById('bgA'), B = document.getElementById('bgB');
+  if (!A || !B) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let list = BG_VIDEOS.slice(), i = 0, cur = A, nxt = B;
+  A.classList.add('on');
+  const prep = () => { if (list.length < 2) { cur.loop = true; return; } nxt.src = list[(i + 1) % list.length]; nxt.load(); };
+  const swap = () => {
+    if (list.length < 2) { cur.currentTime = 0; cur.play().catch(() => {}); return; }
+    i = (i + 1) % list.length;
+    nxt.currentTime = 0;
+    nxt.play().catch(() => {});
+    nxt.classList.add('on'); cur.classList.remove('on');
+    const t = cur; cur = nxt; nxt = t;
+    setTimeout(() => { cur.onended = swap; prep(); }, 1300);
+  };
+  const onErr = (e) => { if (e.target !== nxt) return; const bad = (i + 1) % list.length; list.splice(bad, 1); if (i >= list.length) i = 0; prep(); };
+  A.onerror = onErr; B.onerror = onErr;
+  A.onended = swap;
+  prep();
+  A.play().catch(() => {});
+})();
 render();
 loadWeather();
 setInterval(loadWeather, 15 * 60 * 1000);
