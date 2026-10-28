@@ -2,7 +2,13 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bomonti">
 <title>Bomonti Komşu · Mahall Bomonti sakin portalı</title>
 <meta name="description" content="Mahall Bomonti (Halkapınar, Konak, İzmir) sakinleri için bağımsız portal: duyurular, hava durumu, ulaşım, işletmeler, etkinlikler ve komşu panosu.">
 <meta property="og:title" content="Bomonti Komşu">
@@ -36,7 +42,11 @@ button{font:inherit}
 .chip.blue[aria-pressed=true]{background:var(--blue);border-color:var(--blue)}
 .grid{display:grid;gap:16px}
 /* header */
-header{background:var(--ink);color:#fff;border-bottom:1px solid #22334B;position:sticky;top:0;z-index:40}
+header{background:var(--ink);color:#fff;border-bottom:1px solid #22334B;position:sticky;top:0;z-index:40;padding-top:env(safe-area-inset-top)}
+.app{border-radius:20px;padding:32px;display:flex;flex-wrap:wrap;gap:24px 40px;align-items:center}
+.app-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.app-steps li{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:12px;background:var(--ground);font-size:15px;line-height:1.5}
+.counter{display:inline-flex;align-items:center;gap:8px;font-size:14px}
 .hdr{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-top:12px;padding-bottom:12px}
 .logo{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;font-size:20px}
 .logo:hover{color:#fff}
@@ -660,7 +670,7 @@ function header(v) {
   return '<header><div class="wrap hdr">' +
     '<a class="logo" href="#top">' + I.tower + '<span>Bomonti Komşu</span></a>' +
     '<nav class="main" aria-label="Menu">' +
-      '<a href="#duyurular">' + esc(v.ann.eyebrow) + '</a><a href="#hava">' + esc(v.wx.navLabel) + '</a><a href="#ulasim">' + esc(t.navTransit) + '</a><a href="#isletmeler">' + esc(t.navShops) + '</a><a href="#yasam">' + esc(t.navLife) + '</a><a href="#etkinlik">' + esc(t.navEvents) + '</a><a href="#komsular">' + esc(t.navNeighbours) + '</a>' +
+      '<a href="#duyurular">' + esc(v.ann.eyebrow) + '</a><a href="#hava">' + esc(v.wx.navLabel) + '</a><a href="#ulasim">' + esc(t.navTransit) + '</a><a href="#isletmeler">' + esc(t.navShops) + '</a><a href="#yasam">' + esc(t.navLife) + '</a><a href="#etkinlik">' + esc(t.navEvents) + '</a><a href="#komsular">' + esc(t.navNeighbours) + '</a><a href="#uygulama">' + esc((APPT[v.lang] || APPT.tr)[0]) + '</a>' +
     '</nav>' +
     '<div class="lang"><button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="' + v.langOpen + '" aria-label="Dil · Language" ' + on(v.toggleLang) + '>' + I.globe + '<span>' + esc(v.curCode) + '</span>' + I.chev + '</button>' + menu + '</div>' +
   '</div></header>';
@@ -670,7 +680,7 @@ function hero(v) {
   return '<section id="top" class="hero"><div class="wrap hero-in">' +
     '<div class="hero-txt" style="padding:56px 0 32px"><p style="margin:0;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F39A5B">Konak · Halkapınar · İzmir</p>' +
     '<h1>' + esc(t.heroTitle) + '</h1><p class="sub">' + esc(t.heroSub) + '</p>' +
-    '<div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:8px"><a href="#isletmeler" class="btn" style="min-height:48px;padding:0 24px;background:#E8772E;color:#0E1A2B">' + esc(t.ctaShops) + '</a><a href="#ulasim" class="btn" style="min-height:48px;padding:0 24px;border:1px solid #4A6080;color:#fff">' + esc(t.ctaTransit) + '</a></div></div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:8px"><a href="#isletmeler" class="btn" style="min-height:48px;padding:0 24px;background:#E8772E;color:#0E1A2B">' + esc(t.ctaShops) + '</a><a href="#ulasim" class="btn" style="min-height:48px;padding:0 24px;border:1px solid #4A6080;color:#fff">' + esc(t.ctaTransit) + '</a></div>' + (VISITORS == null ? '' : '<div style="padding-top:4px">' + counterHtml(v, '#D6E0EC') + '</div>') + '</div>' +
   '</div><div class="wrap" style="padding-bottom:56px"><dl class="stats">' +
     v.stats.map((s) => '<div><dt>' + esc(s.label) + '</dt><dd>' + esc(s.value) + '</dd></div>').join('') +
   '</dl></div></section>';
@@ -793,7 +803,67 @@ function history(v) {
 }
 function foot(v) {
   const t = v.t;
-  return '<footer><div class="wrap" style="padding-top:40px;padding-bottom:40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;font-size:14px;line-height:1.6"><div style="flex:999 1 420px;display:flex;flex-direction:column;gap:8px"><strong style="font-family:var(--disp);font-size:18px;color:#fff">Bomonti Komşu</strong><span>' + esc(t.disclaimer) + '</span></div><nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:4px 20px;align-items:flex-start"><a href="#">' + esc(t.fPrivacy) + '</a><a href="https://wa.me/905330635348" target="_blank" rel="noopener">' + esc(t.fContact) + '</a><a href="https://wa.me/905330635348" target="_blank" rel="noopener">WhatsApp</a></nav></div></footer>';
+  return '<footer><div class="wrap" style="padding-top:40px;padding-bottom:40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;font-size:14px;line-height:1.6"><div style="flex:999 1 420px;display:flex;flex-direction:column;gap:8px"><strong style="font-family:var(--disp);font-size:18px;color:#fff">Bomonti Komşu</strong><span>' + esc(t.disclaimer) + '</span>' + counterHtml(v, '#D6E0EC') + '</div><nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:4px 20px;align-items:flex-start"><a href="#">' + esc(t.fPrivacy) + '</a><a href="https://wa.me/905330635348" target="_blank" rel="noopener">' + esc(t.fContact) + '</a><a href="https://wa.me/905330635348" target="_blank" rel="noopener">WhatsApp</a></nav></div></footer>';
+}
+
+/* ---- app install (PWA) ---- */
+const APPT = {
+  tr: ['Uygulama', 'Bomonti Komşu telefonunda', 'Siteyi uygulama olarak ana ekranına ekle: tek dokunuşla açılır, tam ekran çalışır, internet yokken de son içeriği gösterir.', 'Uygulamayı yükle', 'Android: Chrome’da ⋮ menüsü → “Ana ekrana ekle” veya “Uygulamayı yükle”.', 'iPhone / iPad: Safari’de Paylaş düğmesi → “Ana Ekrana Ekle”.', 'Uygulama bu cihazda yüklü.', 'ziyaretçi'],
+  de: ['App', 'Bomonti Komşu auf deinem Handy', 'Füge die Seite als App zum Startbildschirm hinzu: öffnet mit einem Tipp, läuft im Vollbild und zeigt auch offline die letzten Inhalte.', 'App installieren', 'Android: In Chrome ⋮-Menü → „Zum Startbildschirm hinzufügen“ oder „App installieren“.', 'iPhone / iPad: In Safari auf Teilen → „Zum Home-Bildschirm“.', 'Die App ist auf diesem Gerät installiert.', 'Besucher'],
+  en: ['App', 'Bomonti Komşu on your phone', 'Add the site to your home screen as an app: opens with one tap, runs full screen and shows the latest content even offline.', 'Install the app', 'Android: in Chrome, ⋮ menu → “Add to Home screen” or “Install app”.', 'iPhone / iPad: in Safari, tap Share → “Add to Home Screen”.', 'The app is installed on this device.', 'visitors'],
+  ko: ['앱', '휴대폰 속 Bomonti Komşu', '사이트를 홈 화면에 앱으로 추가하세요. 한 번에 열리고 전체 화면으로 실행되며, 오프라인에서도 최근 내용을 보여 줍니다.', '앱 설치', 'Android: Chrome에서 ⋮ 메뉴 → ‘홈 화면에 추가’ 또는 ‘앱 설치’.', 'iPhone / iPad: Safari에서 공유 버튼 → ‘홈 화면에 추가’.', '이 기기에 앱이 설치되어 있습니다.', '방문자'],
+  es: ['App', 'Bomonti Komşu en tu móvil', 'Añade la web a tu pantalla de inicio como app: se abre con un toque, va a pantalla completa y muestra el último contenido incluso sin conexión.', 'Instalar la app', 'Android: en Chrome, menú ⋮ → «Añadir a pantalla de inicio» o «Instalar aplicación».', 'iPhone / iPad: en Safari, Compartir → «Añadir a pantalla de inicio».', 'La app está instalada en este dispositivo.', 'visitantes'],
+  fr: ['Appli', 'Bomonti Komşu sur votre téléphone', 'Ajoutez le site à votre écran d’accueil comme une appli : ouverture en un geste, plein écran et derniers contenus disponibles même hors ligne.', 'Installer l’appli', 'Android : dans Chrome, menu ⋮ → « Ajouter à l’écran d’accueil » ou « Installer l’application ».', 'iPhone / iPad : dans Safari, Partager → « Sur l’écran d’accueil ».', 'L’appli est installée sur cet appareil.', 'visiteurs'],
+  ru: ['Приложение', 'Bomonti Komşu в вашем телефоне', 'Добавьте сайт на главный экран как приложение: открывается одним касанием, работает на весь экран и показывает последние данные даже без интернета.', 'Установить приложение', 'Android: в Chrome меню ⋮ → «Добавить на главный экран» или «Установить приложение».', 'iPhone / iPad: в Safari «Поделиться» → «На экран Домой».', 'Приложение установлено на этом устройстве.', 'посетителей']
+};
+let installEvt = null;
+const isStandalone = () => (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvt = e; render(); });
+window.addEventListener('appinstalled', () => { installEvt = null; render(); });
+const PHONE = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>';
+function appSection(v) {
+  const a = APPT[v.lang] || APPT.tr;
+  let action;
+  if (isStandalone()) action = '<p style="margin:0;font-weight:600;color:var(--green)">' + esc(a[6]) + '</p>';
+  else {
+    const btn = installEvt ? '<button type="button" class="btn btn-dark" style="min-height:48px;padding:0 24px;font-size:16px;align-self:flex-start" ' + on(async () => { const ev = installEvt; installEvt = null; ev.prompt(); try { await ev.userChoice; } catch (e) {} render(); }) + '>' + esc(a[3]) + '</button>' : '';
+    const steps = (isIOS ? [a[5], a[4]] : [a[4], a[5]]).map((x) => '<li>' + PHONE + '<span>' + esc(x) + '</span></li>').join('');
+    action = btn + '<ul class="app-steps">' + steps + '</ul>';
+  }
+  return '<section id="uygulama" class="wrap sec"><div class="card app">' +
+    '<img src="icon-192.png" width="96" height="96" alt="" style="border-radius:22px;flex:none">' +
+    '<div style="flex:999 1 360px;min-width:0;display:flex;flex-direction:column;gap:14px"><p class="eyebrow" style="margin:0">' + esc(a[0]) + '</p><h2 class="h2" style="margin:0">' + esc(a[1]) + '</h2><p style="margin:0;font-size:17px;line-height:1.55;color:var(--muted)">' + esc(a[2]) + '</p>' + action + '</div>' +
+  '</div></section>';
+}
+
+/* ---- visitor counter (abacus.jasoncameron.dev, free, no key) ---- */
+const COUNTER_URL = 'https://abacus.jasoncameron.dev';
+const COUNTER_NS = 'bomonti-komsu', COUNTER_KEY = 'visitors';
+let VISITORS = null;
+async function loadCounter() {
+  let counted = false;
+  try { counted = localStorage.getItem('bomonti-counted') === '1'; } catch (e) {}
+  const action = counted ? 'get' : 'hit';
+  try {
+    const r = await fetch(COUNTER_URL + '/' + action + '/' + COUNTER_NS + '/' + COUNTER_KEY);
+    if (!r.ok) throw new Error(r.status);
+    const j = await r.json();
+    const n = j.value ?? j.count;
+    if (typeof n === 'number') {
+      VISITORS = n;
+      if (!counted) { try { localStorage.setItem('bomonti-counted', '1'); } catch (e) {} }
+      render();
+    }
+  } catch (e) { /* counter unavailable: stay hidden */ }
+}
+const EYE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+function counterHtml(v, color) {
+  if (VISITORS == null) return '';
+  const a = APPT[v.lang] || APPT.tr;
+  let n = String(VISITORS);
+  try { n = new Intl.NumberFormat(v.lang).format(VISITORS); } catch (e) {}
+  return '<span class="counter" style="color:' + color + '">' + EYE + '<strong>' + esc(n) + '</strong> ' + esc(a[7]) + '</span>';
 }
 
 const NAV_WX = { tr: 'Hava', de: 'Wetter', en: 'Weather', ko: '날씨', es: 'Tiempo', fr: 'Météo', ru: 'Погода' };
@@ -803,7 +873,7 @@ function render() {
   v.wx.navLabel = NAV_WX[v.lang] || NAV_WX.tr;
   document.documentElement.lang = v.lang;
   const focusedLang = document.activeElement && document.activeElement.closest && document.activeElement.closest('.lang');
-  document.getElementById('app').innerHTML = header(v) + '<main>' + hero(v) + '<div class="below">' + republic(v) + quick(v) + weather(v) + notices(v) + transit(v) + shops(v) + life(v) + events(v) + neighbours(v) + history(v) + '<div style="height:88px"></div></div></main>' + foot(v);
+  document.getElementById('app').innerHTML = header(v) + '<main>' + hero(v) + '<div class="below">' + republic(v) + quick(v) + weather(v) + notices(v) + transit(v) + shops(v) + life(v) + events(v) + neighbours(v) + appSection(v) + history(v) + '<div style="height:88px"></div></div></main>' + foot(v);
   if (focusedLang) { const b = document.querySelector('.lang-btn'); if (b) b.focus(); }
 }
 /* ---- background video playlist: add more files here (bomonti2.mp4, bomonti3.mp4 …) ---- */
@@ -832,6 +902,8 @@ const BG_VIDEOS = ['bomonti.mp4', 'bomonti2.mp4', 'bomonti3.mp4'];
 })();
 render();
 loadWeather();
+loadCounter();
+if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); }); }
 setInterval(loadWeather, 15 * 60 * 1000);
 </script>
 </body>
