@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bomonti Komşu · Mahall Bomonti sakin portalı</title>
+<meta name="description" content="Mahall Bomonti (Halkapınar, Konak, İzmir) sakinleri için bağımsız portal: duyurular, hava durumu, ulaşım, işletmeler, etkinlikler ve komşu panosu.">
+<meta property="og:title" content="Bomonti Komşu">
+<meta property="og:description" content="Mahall Bomonti sakinleri için duyurular, hava durumu, ulaşım ve işletmeler.">
+<meta name="theme-color" content="#0E1A2B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 36'%3E%3Crect width='28' height='36' rx='6' fill='%230E1A2B'/%3E%3Cpath d='M9 32V9l5-5 5 5v23' fill='none' stroke='%23E8772E' stroke-width='2.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+:root{--ink:#0E1A2B;--ink2:#152438;--ink3:#1B2A40;--line-d:#2A3D58;--ground:#F5F7FA;--card:#FFFFFF;--line:#DCE3EC;--muted:#4A5A70;--body:#2E3E54;--blue:#1F5FAE;--blue-t:#E9F0FA;--tile:#EEF3F9;--orange:#E8772E;--orange-l:#F39A5B;--orange-d:#A84B12;--green:#1E7A46;--sans:Inter,system-ui,-apple-system,"Segoe UI","Noto Sans KR","Apple SD Gothic Neo",sans-serif;--disp:"Space Grotesk",Inter,system-ui,"Noto Sans KR",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}a:hover{color:#163F75}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--orange-l);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.sec{padding-top:88px}
+.eyebrow{margin:0 0 8px;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-d)}
+.h2{margin:0 0 12px;font-family:var(--disp);font-size:clamp(30px,4vw,44px);letter-spacing:-.02em;line-height:1.1}
+.lead{margin:0 0 32px;font-size:18px;color:var(--muted);max-width:640px;line-height:1.55}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px}
+.pill{display:inline-block;font-size:13px;font-weight:600;padding:4px 12px;border-radius:999px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;border:0;cursor:pointer}
+.btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{color:#fff;background:#22334B}
+.btn-line{border:1px solid #C5D0DD;color:var(--ink);background:#fff}.btn-line:hover{color:var(--ink);background:var(--ground)}
+.btn-wa{background:var(--green);color:#fff}.btn-wa:hover{color:#fff;background:#17633A}
+.chip{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid #C5D0DD;background:#fff;color:var(--ink);font-weight:600;font-size:15px;cursor:pointer}
+.chip[aria-pressed=true],.chip[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip.blue[aria-pressed=true]{background:var(--blue);border-color:var(--blue)}
+.grid{display:grid;gap:16px}
+/* header */
+header{background:var(--ink);color:#fff;border-bottom:1px solid #22334B;position:sticky;top:0;z-index:40}
+.hdr{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-top:12px;padding-bottom:12px}
+.logo{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-family:var(--disp);font-weight:700;font-size:20px}
+.logo:hover{color:#fff}
+nav.main{display:flex;flex-wrap:wrap;gap:2px}
+nav.main a{color:#D6E0EC;text-decoration:none;padding:12px 10px;font-size:15px;font-weight:500}
+nav.main a:hover{color:#fff}
+.lang{position:relative;margin-left:auto}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid #3B5578;border-radius:999px;background:var(--ink3);color:#fff;font-weight:600;font-size:14px;cursor:pointer}
+.lang-menu{position:absolute;right:0;top:calc(100% + 8px);list-style:none;margin:0;padding:6px;min-width:190px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 32px rgba(14,26,43,.25);display:flex;flex-direction:column;gap:2px}
+.lang-menu button{width:100%;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:var(--ink);font-size:15px;cursor:pointer;text-align:left}
+.lang-menu button:hover{background:var(--ground)}
+.lang-menu button[aria-current=true]{background:var(--blue-t);color:var(--blue);font-weight:600}
+.lang-menu small{font-size:12px;color:var(--muted)}
+@media (max-width:860px){nav.main{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap}nav.main a{white-space:nowrap}}
+/* hero */
+.hero{background:var(--ink);color:#fff;overflow:hidden}
+.hero-in{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding-top:72px;padding-bottom:56px}
+.hero-txt{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.hero h1{margin:0;font-family:var(--disp);font-weight:700;font-size:clamp(40px,6vw,72px);line-height:1.02;letter-spacing:-.02em}
+.hero p.sub{margin:0;font-size:19px;line-height:1.55;color:#C3D0E0;max-width:560px}
+.hero-media{flex:1 1 360px;min-width:0;margin:0;aspect-ratio:9/12;max-height:520px;border-radius:20px;background:var(--ink2);border:1px solid var(--line-d);position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.hero-media svg.bg,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-media figcaption{position:relative;margin:16px;width:100%;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;background:var(--ink);border:1px dashed #4A6080;color:#D6E0EC;font-size:14px}
+.stats{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line-d);border:1px solid var(--line-d);border-radius:16px;overflow:hidden}
+.stats div{background:var(--ink);padding:24px;display:flex;flex-direction:column-reverse;gap:4px}
+.stats dt{font-size:14px;color:#B8C6D9}.stats dd{margin:0;font-family:var(--disp);font-weight:700;font-size:36px}
+/* quick */
+.quick{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.qcard{padding:20px;display:flex;gap:16px;align-items:flex-start}
+.qicon{flex:none;width:44px;height:44px;border-radius:12px;background:var(--blue-t);display:flex;align-items:center;justify-content:center}
+/* weather */
+.wx{padding:28px;display:flex;flex-direction:column;gap:22px;border-radius:20px}
+.wx-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.tile{background:var(--tile);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.tile span{font-size:14px;color:var(--muted)}.tile strong{font-size:20px}
+.wx-alert{background:#E6F0FB;border-radius:12px;padding:16px 20px;font-size:16px;color:#1E3A5F}
+.wx-alert.warn{background:#FFF3EA;color:#7A3A0E}
+.wx-days{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:10px}
+.wx-day{background:var(--tile);border-radius:14px;padding:16px 8px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+/* misc */
+.route{list-style:none;margin:0 0 40px;padding:24px;display:flex;flex-wrap:wrap;gap:8px}
+.route li{flex:1 1 160px;display:flex;flex-direction:column;gap:8px;padding:12px 8px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.panel{padding:28px;display:flex;flex-wrap:wrap;gap:32px}
+.stops{flex:1 1 260px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.stops li{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;background:var(--ground);font-size:15px}
+.shops{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.shop{padding:20px;display:flex;flex-direction:column;gap:14px}
+.life{grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr))}
+.events{list-style:none;margin:0;padding:0;overflow:hidden}
+.events li{display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding:20px 24px;border-bottom:1px solid #E6EBF1}
+.events li:last-child{border-bottom:0}
+.date{flex:none;width:72px;text-align:center;padding:10px 0;border-radius:12px;background:var(--ink);color:#fff}
+.notices{grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:20px}
+.contact{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ground)}
+form.post{flex:1 1 320px;background:var(--ink);color:#fff;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px}
+form.post input,form.post textarea{border-radius:10px;border:1px solid #3B5578;background:var(--ink2);color:#fff;padding:12px;font:16px var(--sans)}
+footer{margin-top:88px;background:var(--ink);color:#C3D0E0}
+footer a{color:#D6E0EC;padding:10px 0}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* ---- Minimal runtime: the page's data and logic live in Component below ---- */
+class DCLogic {
+  constructor() { this.props = {}; this.state = {}; }
+  setState(p) { Object.assign(this.state, p); render(); }
+}
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const LANGS = [
+      { code: 'tr', name: 'Türkçe' }, { code: 'de', name: 'Deutsch' }, { code: 'en', name: 'English' },
+      { code: 'ko', name: '한국어' }, { code: 'es', name: 'Español' }, { code: 'fr', name: 'Français' }, { code: 'ru', name: 'Русский' }
+    ];
+    let lang = st.lang || this.props.lang || 'tr';
+    const cat = st.cat || 'all';
+    const tab = st.tab || 'metro';
+
+    const WA_YONETIM = 'https://wa.me/905330635348';
+    const WA_DOGAN = 'https://wa.me/905056413739';
+    const WA_OZKAN = 'https://wa.me/90536666866';
+    const PH = { yon: '+90 533 063 53 48', dog: '+90 505 641 37 39', ozk: '+90 536 666 866' };
+    const STOP_M = ['Konak · Çankaya', 'Üçyol · Fahrettin Altay', 'Bornova · Ege Üniversitesi'];
+
+    const L = {
+      tr: {
+        t: {
+          navTransit: 'Ulaşım', navShops: 'İşletmeler', navLife: 'Yaşam', navEvents: 'Etkinlikler', navNeighbours: 'Komşular',
+          heroTitle: 'Mahall Bomonti’de komşuluk',
+          heroSub: 'İzmir’in en yüksek binasında yaşayanlar için: ulaşım, işletmeler, etkinlikler ve komşu panosu tek yerde.',
+          ctaShops: 'İşletmeleri keşfet', ctaTransit: 'Ulaşımı gör', videoLabel: '[Drone videosu buraya eklenecek]', quickTitle: 'Hızlı bilgiler',
+          transitEyebrow: 'Ulaşım', transitTitle: 'Her yere yakın',
+          transitSub: 'Metro, İZBAN ve tramvayın buluştuğu Halkapınar aktarma merkezi beş dakikalık yürüme mesafesinde.',
+          liveNote: '[Canlı sefer saatleri burada gösterilecek]',
+          shopsEyebrow: 'Rehber', shopsTitle: 'Sitedeki işletmeler',
+          shopsSub: 'Kafeden eczaneye, kuaförden spor salonuna: sitede ve hemen çevresinde hizmet veren tüm işletmeler.',
+          filterLabel: 'Kategori filtresi', shopName: '[İşletme adı]', shopMeta: '[Blok · Kat] · [Açılış saatleri]', route: 'Yol tarifi',
+          addShopTitle: 'İşletmenizi ekleyin', addShopSub: 'Temel kayıt ücretsiz. Öne çıkan kayıt için bize yazın.', addShopCta: 'WhatsApp ile yaz',
+          lifeEyebrow: 'Yaşam & kültür', lifeTitle: 'Kapının önünde kültür ve spor',
+          eventsEyebrow: 'Takvim', eventsTitle: 'Yaklaşan etkinlikler', eventMore: 'Detaylar',
+          nbEyebrow: 'Komşular', nbTitle: 'Komşu panosu',
+          nbSub: 'Usta önerileri, kayıp eşyalar, ortak yolculuklar ve yardımlaşma: komşudan komşuya.',
+          postText: '[İlan metni]', postMeta: '[Ad] · [Tarih]',
+          formTitle: 'Panoya duyuru ekle', formLabelTitle: 'Başlık', formLabelText: 'Duyuru metni', formSubmit: 'Gönder',
+          formKvkk: 'Paylaşılan bilgiler KVKK kapsamında yalnızca bu panoda yayınlanır. Telefon numarası veya daire numarası paylaşmayın.',
+          histSince: 'Bomonti fabrikasının kuruluşu', histTitle: 'Tarihle iç içe bir yaşam alanı',
+          histBody: 'Mahall Bomonti, adını bölgedeki tarihi Bomonti fabrikasından alıyor. Restore edilen tarihi yapılarla birlikte proje toplam 12 bloktan oluşuyor; bunların 9’u tarihi bina.',
+          disclaimer: 'Bağımsız bir sakin portalıdır. Mahall Bomonti veya Türkerler Holding ile resmi bir bağlantısı yoktur.',
+          fPrivacy: 'Gizlilik (KVKK)', fContact: 'İletişim'
+        },
+        min: '5 dk', stats: ['Yükseklik · İzmir’in en yükseği', 'Kat', 'Halkapınar’a yürüyerek', 'Yeşil alan'],
+        quick: ['Acil durum', 'Site yönetimi', 'Doğan Bey', 'Reklam ve teknik · Özkan', 'Otopark'], info: '[Bilgi]',
+        route: [['Mahall Bomonti', 'Başlangıç'], ['Metro istasyonu', '≈ 400 m'], ['Halkapınar aktarma', '5 dk yürüme'], ['Alsancak · Kordon', '≈ 10 dk'], ['Konak · Karşıyaka', 'birkaç dakika']],
+        tabs: {
+          metro: { label: 'Metro', title: 'İzmir Metrosu · Halkapınar', body: 'Halkapınar metro istasyonu binadan yaklaşık 400 metre uzakta. Hat, şehir merkezi ile Bornova arasında kesintisiz bağlantı sağlıyor.', stops: STOP_M },
+          izban: { label: 'İZBAN', title: 'İZBAN banliyö treni', body: 'Kuzey–güney hattı Halkapınar’dan geçiyor: Karşıyaka ve Menemen yönüne, güneyde Gaziemir ve havalimanı yönüne.', stops: ['Karşıyaka · Menemen · Aliağa', 'Gaziemir · Havalimanı', 'Cumaovası · Torbalı'] },
+          tram: { label: 'Tramvay', title: 'Konak tramvayı', body: 'Halkapınar’dan başlayan tramvay Alsancak ve Kordon boyunca Konak’a uzanıyor. Sahile en rahat yol.', stops: ['Alsancak', 'Kordon · Gazi Bulvarı', 'Konak · Fahrettin Altay'] },
+          air: { label: 'Havalimanı', title: 'Adnan Menderes Havalimanı', body: 'Halkapınar’dan İZBAN ile aktarmasız havalimanına ulaşım. Yolculuk süresi: [Süre].', stops: ['Halkapınar → Havalimanı (İZBAN)', '[Havaş / otobüs bilgisi]', '[Taksi durağı]'] }
+        },
+        cats: { all: 'Tümü', food: 'Yeme-İçme', shop: 'Alışveriş', service: 'Hizmetler', health: 'Sağlık', sport: 'Spor & Kültür' },
+        shops: ['Kafe', 'Restoran', 'Market', 'Mağaza', 'Kuaför', 'Kuru temizleme', 'Eczane', 'Diş kliniği', 'Spor salonu', 'Tenis kulübü'],
+        life: [
+          ['Opera', 'Opera ve tiyatro salonu', 'Türkiye’de bir yaşam alanında ilk kez orkestra çukuru bulunan salon.'],
+          ['1000', 'Kişilik gösteri alanı', 'Konserler, festivaller ve büyük etkinlikler için.'],
+          ['Sinema', 'Sinema', 'Vizyondaki filmler, yürüme mesafesinde.'],
+          ['Müze', 'Müze ve kütüphane', 'Bölgenin tarihini anlatan müze ve okuma alanları.'],
+          ['Tenis', 'Tenis kulübü', 'Kortlar ve kulüp olanakları: [Rezervasyon bilgisi].'],
+          ['Koşu', 'Koşu ve bisiklet yolu', 'Asırlık ağaçların arasında yeşil alanda parkur.']
+        ],
+        ev: ['[Gün]', '[Ay]', '[Etkinlik adı]', '[Mekân · Saat]'],
+        board: ['Usta önerisi', 'Kayıp & bulunan', 'Ortak yolculuk', 'Yardımlaşma']
+      },
+      de: {
+        t: {
+          navTransit: 'Anbindung', navShops: 'Geschäfte', navLife: 'Freizeit', navEvents: 'Events', navNeighbours: 'Nachbarn',
+          heroTitle: 'Nachbarschaft im Mahall Bomonti',
+          heroSub: 'Für alle, die in İzmirs höchstem Gebäude wohnen: Anbindung, Geschäfte, Events und Nachbarschafts-Brett an einem Ort.',
+          ctaShops: 'Geschäfte entdecken', ctaTransit: 'Anbindung ansehen', videoLabel: '[Drohnenvideo wird hier eingebettet]', quickTitle: 'Schnellinfos',
+          transitEyebrow: 'Anbindung', transitTitle: 'Überall schnell hin',
+          transitSub: 'Der Umsteigeknoten Halkapınar mit Metro, İZBAN und Tram ist fünf Gehminuten entfernt.',
+          liveNote: '[Hier erscheinen die Live-Abfahrtszeiten]',
+          shopsEyebrow: 'Verzeichnis', shopsTitle: 'Geschäfte im Komplex',
+          shopsSub: 'Vom Café bis zur Apotheke, vom Friseur bis zum Fitnessstudio: alle Geschäfte im Komplex und direkt drumherum.',
+          filterLabel: 'Kategorie-Filter', shopName: '[Name des Geschäfts]', shopMeta: '[Block · Etage] · [Öffnungszeiten]', route: 'Route',
+          addShopTitle: 'Eigenes Geschäft eintragen', addShopSub: 'Basiseintrag kostenlos. Für Top-Platzierung schreib uns.', addShopCta: 'Per WhatsApp schreiben',
+          lifeEyebrow: 'Kultur & Freizeit', lifeTitle: 'Kultur und Sport vor der Haustür',
+          eventsEyebrow: 'Kalender', eventsTitle: 'Nächste Veranstaltungen', eventMore: 'Details',
+          nbEyebrow: 'Nachbarn', nbTitle: 'Schwarzes Brett',
+          nbSub: 'Handwerker-Tipps, Fundsachen, Mitfahrgelegenheiten und Nachbarschaftshilfe: von Nachbar zu Nachbar.',
+          postText: '[Text der Anzeige]', postMeta: '[Name] · [Datum]',
+          formTitle: 'Aushang erstellen', formLabelTitle: 'Titel', formLabelText: 'Text', formSubmit: 'Veröffentlichen',
+          formKvkk: 'Angaben werden gemäß KVKK nur auf diesem Brett veröffentlicht. Bitte keine Telefon- oder Wohnungsnummern posten.',
+          histSince: 'Gründung der Bomonti-Fabrik', histTitle: 'Wohnen zwischen Geschichte und Moderne',
+          histBody: 'Mahall Bomonti ist nach der historischen Bomonti-Fabrik benannt, die hier stand. Das Projekt umfasst 12 Blöcke, davon 9 restaurierte historische Gebäude.',
+          disclaimer: 'Unabhängiges Bewohnerportal. Nicht offiziell mit Mahall Bomonti oder Türkerler Holding verbunden.',
+          fPrivacy: 'Datenschutz (KVKK)', fContact: 'Kontakt'
+        },
+        min: '5 Min', stats: ['Höhe · höchstes Gebäude İzmirs', 'Etagen', 'zu Fuß nach Halkapınar', 'Grünfläche'],
+        quick: ['Notruf', 'Hausverwaltung', 'Doğan Bey', 'Werbung & Technik · Özkan', 'Parken'], info: '[Info]',
+        route: [['Mahall Bomonti', 'Start'], ['Metro-Station', '≈ 400 m'], ['Umstieg Halkapınar', '5 Min zu Fuß'], ['Alsancak · Kordon', '≈ 10 Min'], ['Konak · Karşıyaka', 'wenige Minuten']],
+        tabs: {
+          metro: { label: 'Metro', title: 'İzmir Metro · Halkapınar', body: 'Die Metro-Station Halkapınar liegt rund 400 Meter vom Gebäude entfernt. Die Linie verbindet das Zentrum direkt mit Bornova.', stops: STOP_M },
+          izban: { label: 'İZBAN', title: 'İZBAN S-Bahn', body: 'Die Nord-Süd-Linie hält in Halkapınar: nach Norden Richtung Karşıyaka und Menemen, nach Süden Richtung Gaziemir und Flughafen.', stops: ['Karşıyaka · Menemen · Aliağa', 'Gaziemir · Flughafen', 'Cumaovası · Torbalı'] },
+          tram: { label: 'Tram', title: 'Konak-Tram', body: 'Die Tram startet in Halkapınar und fährt über Alsancak und den Kordon bis Konak. Der bequemste Weg ans Wasser.', stops: ['Alsancak', 'Kordon · Gazi Bulvarı', 'Konak · Fahrettin Altay'] },
+          air: { label: 'Flughafen', title: 'Flughafen Adnan Menderes', body: 'Von Halkapınar mit der İZBAN ohne Umstieg zum Flughafen. Fahrzeit: [Dauer].', stops: ['Halkapınar → Flughafen (İZBAN)', '[Havaş-/Bus-Info]', '[Taxistand]'] }
+        },
+        cats: { all: 'Alle', food: 'Essen & Trinken', shop: 'Einkaufen', service: 'Dienstleistungen', health: 'Gesundheit', sport: 'Sport & Kultur' },
+        shops: ['Café', 'Restaurant', 'Supermarkt', 'Boutique', 'Friseur', 'Reinigung', 'Apotheke', 'Zahnarzt', 'Fitnessstudio', 'Tennisclub'],
+        life: [
+          ['Oper', 'Opern- und Theatersaal', 'Erster Saal mit Orchestergraben in einem Wohnkomplex in der Türkei.'],
+          ['1000', 'Personen Eventfläche', 'Für Konzerte, Festivals und große Veranstaltungen.'],
+          ['Kino', 'Kino', 'Aktuelle Filme, zu Fuß erreichbar.'],
+          ['Museum', 'Museum und Bibliothek', 'Museum zur Geschichte des Ortes und ruhige Lesebereiche.'],
+          ['Tennis', 'Tennisclub', 'Plätze und Clubangebot: [Buchungsinfo].'],
+          ['Laufen', 'Lauf- und Radweg', 'Strecke durchs Grüne, vorbei an hundertjährigen Bäumen.']
+        ],
+        ev: ['[Tag]', '[Monat]', '[Name der Veranstaltung]', '[Ort · Uhrzeit]'],
+        board: ['Handwerker-Tipp', 'Fundsachen', 'Mitfahren', 'Nachbarschaftshilfe']
+      },
+      en: {
+        t: {
+          navTransit: 'Transport', navShops: 'Businesses', navLife: 'Living', navEvents: 'Events', navNeighbours: 'Neighbours',
+          heroTitle: 'Neighbourhood life at Mahall Bomonti',
+          heroSub: 'For everyone living in İzmir’s tallest building: transport, businesses, events and a neighbour board in one place.',
+          ctaShops: 'Explore businesses', ctaTransit: 'See transport', videoLabel: '[Drone video goes here]', quickTitle: 'Quick info',
+          transitEyebrow: 'Transport', transitTitle: 'Close to everything',
+          transitSub: 'Halkapınar interchange, where metro, İZBAN and tram meet, is a five-minute walk away.',
+          liveNote: '[Live departures will appear here]',
+          shopsEyebrow: 'Directory', shopsTitle: 'Businesses on site',
+          shopsSub: 'From cafés to pharmacies, hairdressers to gyms: every business in and around the complex.',
+          filterLabel: 'Category filter', shopName: '[Business name]', shopMeta: '[Block · Floor] · [Opening hours]', route: 'Directions',
+          addShopTitle: 'List your business', addShopSub: 'A basic listing is free. Message us for a featured spot.', addShopCta: 'Message on WhatsApp',
+          lifeEyebrow: 'Living & culture', lifeTitle: 'Culture and sport on your doorstep',
+          eventsEyebrow: 'Calendar', eventsTitle: 'Upcoming events', eventMore: 'Details',
+          nbEyebrow: 'Neighbours', nbTitle: 'Neighbour board',
+          nbSub: 'Tradesperson tips, lost & found, shared rides and helping hands: from neighbour to neighbour.',
+          postText: '[Post text]', postMeta: '[Name] · [Date]',
+          formTitle: 'Post a notice', formLabelTitle: 'Title', formLabelText: 'Text', formSubmit: 'Publish',
+          formKvkk: 'Notices are published only on this board, in line with Turkey’s KVKK data protection law. Please don’t share phone or flat numbers.',
+          histSince: 'Bomonti factory founded', histTitle: 'Where history meets modern living',
+          histBody: 'Mahall Bomonti takes its name from the historic Bomonti factory that once stood here. The project has 12 blocks, 9 of them restored historic buildings.',
+          disclaimer: 'Independent residents’ portal. Not officially affiliated with Mahall Bomonti or Türkerler Holding.',
+          fPrivacy: 'Privacy (KVKK)', fContact: 'Contact'
+        },
+        min: '5 min', stats: ['Height · tallest in İzmir', 'Floors', 'walk to Halkapınar', 'Green space'],
+        quick: ['Emergency', 'Site management', 'Doğan Bey', 'Advertising & tech · Özkan', 'Parking'], info: '[Info]',
+        route: [['Mahall Bomonti', 'Start'], ['Metro station', '≈ 400 m'], ['Halkapınar interchange', '5 min walk'], ['Alsancak · Kordon', '≈ 10 min'], ['Konak · Karşıyaka', 'a few minutes']],
+        tabs: {
+          metro: { label: 'Metro', title: 'İzmir Metro · Halkapınar', body: 'Halkapınar metro station is about 400 metres from the building. The line links the city centre directly with Bornova.', stops: STOP_M },
+          izban: { label: 'İZBAN', title: 'İZBAN commuter rail', body: 'The north–south line stops at Halkapınar: north towards Karşıyaka and Menemen, south towards Gaziemir and the airport.', stops: ['Karşıyaka · Menemen · Aliağa', 'Gaziemir · Airport', 'Cumaovası · Torbalı'] },
+          tram: { label: 'Tram', title: 'Konak tram', body: 'Starting at Halkapınar, the tram runs via Alsancak and the Kordon to Konak. The easiest way to the waterfront.', stops: ['Alsancak', 'Kordon · Gazi Bulvarı', 'Konak · Fahrettin Altay'] },
+          air: { label: 'Airport', title: 'Adnan Menderes Airport', body: 'A direct İZBAN ride from Halkapınar to the airport, no change needed. Journey time: [Duration].', stops: ['Halkapınar → Airport (İZBAN)', '[Havaş / bus info]', '[Taxi rank]'] }
+        },
+        cats: { all: 'All', food: 'Food & drink', shop: 'Shopping', service: 'Services', health: 'Health', sport: 'Sport & culture' },
+        shops: ['Café', 'Restaurant', 'Supermarket', 'Boutique', 'Hairdresser', 'Dry cleaner', 'Pharmacy', 'Dental clinic', 'Gym', 'Tennis club'],
+        life: [
+          ['Opera', 'Opera and theatre hall', 'The first hall with an orchestra pit in a residential complex in Turkey.'],
+          ['1000', 'Person event space', 'For concerts, festivals and large events.'],
+          ['Cinema', 'Cinema', 'Current films, within walking distance.'],
+          ['Museum', 'Museum and library', 'A museum on the site’s history and quiet reading areas.'],
+          ['Tennis', 'Tennis club', 'Courts and club facilities: [Booking info].'],
+          ['Running', 'Running and cycling path', 'A green route past century-old trees.']
+        ],
+        ev: ['[Day]', '[Month]', '[Event name]', '[Venue · Time]'],
+        board: ['Tradesperson tip', 'Lost & found', 'Shared rides', 'Helping hands']
+      },
+      ko: {
+        t: {
+          navTransit: '교통', navShops: '상점', navLife: '생활', navEvents: '행사', navNeighbours: '이웃',
+          heroTitle: '마할 봄몬티 이웃 생활',
+          heroSub: '이즈미르에서 가장 높은 건물에 사는 모든 분을 위해: 교통, 상점, 행사, 이웃 게시판을 한곳에.',
+          ctaShops: '상점 둘러보기', ctaTransit: '교통 정보 보기', videoLabel: '[드론 영상이 여기에 들어갑니다]', quickTitle: '빠른 정보',
+          transitEyebrow: '교통', transitTitle: '어디든 가까운 위치',
+          transitSub: '지하철, İZBAN, 트램이 만나는 Halkapınar 환승역까지 걸어서 5분입니다.',
+          liveNote: '[실시간 출발 정보가 여기에 표시됩니다]',
+          shopsEyebrow: '안내', shopsTitle: '단지 내 상점',
+          shopsSub: '카페부터 약국, 미용실부터 헬스장까지: 단지 안팎의 모든 상점.',
+          filterLabel: '카테고리 필터', shopName: '[상호명]', shopMeta: '[동 · 층] · [영업시간]', route: '길찾기',
+          addShopTitle: '내 가게 등록하기', addShopSub: '기본 등록은 무료입니다. 추천 노출은 문의해 주세요.', addShopCta: 'WhatsApp으로 문의',
+          lifeEyebrow: '생활 & 문화', lifeTitle: '집 앞에서 즐기는 문화와 스포츠',
+          eventsEyebrow: '일정', eventsTitle: '다가오는 행사', eventMore: '자세히',
+          nbEyebrow: '이웃', nbTitle: '이웃 게시판',
+          nbSub: '기사 추천, 분실물, 카풀, 서로 돕기: 이웃에서 이웃으로.',
+          postText: '[게시글 내용]', postMeta: '[이름] · [날짜]',
+          formTitle: '게시글 작성', formLabelTitle: '제목', formLabelText: '내용', formSubmit: '게시하기',
+          formKvkk: '게시물은 튀르키예 개인정보보호법(KVKK)에 따라 이 게시판에만 공개됩니다. 전화번호나 호수는 공유하지 마세요.',
+          histSince: '봄몬티 공장 설립', histTitle: '역사와 현대가 어우러진 주거 공간',
+          histBody: '마할 봄몬티는 이곳에 있던 역사적인 봄몬티 공장에서 이름을 따왔습니다. 총 12개 동으로 이루어져 있으며, 그중 9개 동은 복원된 역사 건물입니다.',
+          disclaimer: '독립 주민 포털입니다. Mahall Bomonti 또는 Türkerler Holding과 공식적인 관계가 없습니다.',
+          fPrivacy: '개인정보 (KVKK)', fContact: '연락처'
+        },
+        min: '5분', stats: ['높이 · 이즈미르 최고층', '층', 'Halkapınar까지 도보', '녹지'],
+        quick: ['긴급 전화', '관리사무소', 'Doğan Bey', '광고 & 기술 · Özkan', '주차'], info: '[정보]',
+        route: [['Mahall Bomonti', '출발'], ['지하철역', '≈ 400 m'], ['Halkapınar 환승', '도보 5분'], ['Alsancak · Kordon', '≈ 10분'], ['Konak · Karşıyaka', '몇 분']],
+        tabs: {
+          metro: { label: '지하철', title: '이즈미르 지하철 · Halkapınar', body: 'Halkapınar 지하철역은 건물에서 약 400m 거리입니다. 시내 중심과 Bornova를 바로 연결합니다.', stops: STOP_M },
+          izban: { label: 'İZBAN', title: 'İZBAN 광역 철도', body: '남북 노선이 Halkapınar에 정차합니다: 북쪽으로 Karşıyaka·Menemen, 남쪽으로 Gaziemir·공항 방면.', stops: ['Karşıyaka · Menemen · Aliağa', 'Gaziemir · 공항', 'Cumaovası · Torbalı'] },
+          tram: { label: '트램', title: 'Konak 트램', body: 'Halkapınar에서 출발해 Alsancak과 Kordon을 거쳐 Konak까지 운행합니다. 바닷가로 가는 가장 편한 길입니다.', stops: ['Alsancak', 'Kordon · Gazi Bulvarı', 'Konak · Fahrettin Altay'] },
+          air: { label: '공항', title: 'Adnan Menderes 공항', body: 'Halkapınar에서 İZBAN으로 환승 없이 공항까지 갑니다. 소요 시간: [시간].', stops: ['Halkapınar → 공항 (İZBAN)', '[Havaş / 버스 정보]', '[택시 승강장]'] }
+        },
+        cats: { all: '전체', food: '음식점·카페', shop: '쇼핑', service: '생활 서비스', health: '건강', sport: '스포츠·문화' },
+        shops: ['카페', '레스토랑', '슈퍼마켓', '부티크', '미용실', '세탁소', '약국', '치과', '헬스장', '테니스 클럽'],
+        life: [
+          ['오페라', '오페라·극장 홀', '튀르키예 주거 단지 최초로 오케스트라 피트를 갖춘 공연장.'],
+          ['1000', '명 수용 공연장', '콘서트, 축제, 대형 행사를 위한 공간.'],
+          ['영화관', '영화관', '최신 영화를 걸어서 즐기세요.'],
+          ['박물관', '박물관과 도서관', '이곳의 역사를 담은 박물관과 조용한 독서 공간.'],
+          ['테니스', '테니스 클럽', '코트와 클럽 시설: [예약 정보].'],
+          ['러닝', '러닝·자전거 길', '100년 된 나무 사이를 지나는 녹지 코스.']
+        ],
+        ev: ['[일]', '[월]', '[행사명]', '[장소 · 시간]'],
+        board: ['기사 추천', '분실물', '카풀', '서로 돕기']
+      },
+      es: {
+        t: {
+          navTransit: 'Transporte', navShops: 'Comercios', navLife: 'Vida', navEvents: 'Eventos', navNeighbours: 'Vecinos',
+          heroTitle: 'Vida de barrio en Mahall Bomonti',
+          heroSub: 'Para quienes viven en el edificio más alto de Esmirna: transporte, comercios, eventos y tablón vecinal en un solo lugar.',
+          ctaShops: 'Ver comercios', ctaTransit: 'Ver transporte', videoLabel: '[Aquí irá el vídeo de dron]', quickTitle: 'Información rápida',
+          transitEyebrow: 'Transporte', transitTitle: 'Cerca de todo',
+          transitSub: 'El intercambiador de Halkapınar, donde se cruzan metro, İZBAN y tranvía, está a cinco minutos a pie.',
+          liveNote: '[Aquí aparecerán las salidas en tiempo real]',
+          shopsEyebrow: 'Directorio', shopsTitle: 'Comercios del complejo',
+          shopsSub: 'De la cafetería a la farmacia, de la peluquería al gimnasio: todos los comercios dentro y alrededor del complejo.',
+          filterLabel: 'Filtro por categoría', shopName: '[Nombre del comercio]', shopMeta: '[Bloque · Planta] · [Horario]', route: 'Cómo llegar',
+          addShopTitle: 'Añade tu negocio', addShopSub: 'La ficha básica es gratis. Escríbenos para destacarla.', addShopCta: 'Escribir por WhatsApp',
+          lifeEyebrow: 'Vida y cultura', lifeTitle: 'Cultura y deporte a la puerta de casa',
+          eventsEyebrow: 'Agenda', eventsTitle: 'Próximos eventos', eventMore: 'Detalles',
+          nbEyebrow: 'Vecinos', nbTitle: 'Tablón vecinal',
+          nbSub: 'Técnicos recomendados, objetos perdidos, viajes compartidos y ayuda mutua: de vecino a vecino.',
+          postText: '[Texto del anuncio]', postMeta: '[Nombre] · [Fecha]',
+          formTitle: 'Publicar un aviso', formLabelTitle: 'Título', formLabelText: 'Texto', formSubmit: 'Publicar',
+          formKvkk: 'Los avisos se publican solo en este tablón, conforme a la ley turca de protección de datos (KVKK). No compartas números de teléfono ni de piso.',
+          histSince: 'Fundación de la fábrica Bomonti', histTitle: 'Donde la historia se une a la vida moderna',
+          histBody: 'Mahall Bomonti toma su nombre de la histórica fábrica Bomonti que se alzaba aquí. El proyecto tiene 12 bloques, 9 de ellos edificios históricos restaurados.',
+          disclaimer: 'Portal independiente de residentes. Sin vínculo oficial con Mahall Bomonti ni con Türkerler Holding.',
+          fPrivacy: 'Privacidad (KVKK)', fContact: 'Contacto'
+        },
+        min: '5 min', stats: ['Altura · el más alto de Esmirna', 'Plantas', 'a pie hasta Halkapınar', 'Zonas verdes'],
+        quick: ['Emergencias', 'Administración', 'Doğan Bey', 'Publicidad y técnica · Özkan', 'Aparcamiento'], info: '[Info]',
+        route: [['Mahall Bomonti', 'Inicio'], ['Estación de metro', '≈ 400 m'], ['Intercambiador Halkapınar', '5 min a pie'], ['Alsancak · Kordon', '≈ 10 min'], ['Konak · Karşıyaka', 'pocos minutos']],
+        tabs: {
+          metro: { label: 'Metro', title: 'Metro de Esmirna · Halkapınar', body: 'La estación de metro de Halkapınar está a unos 400 metros del edificio. La línea conecta directamente el centro con Bornova.', stops: STOP_M },
+          izban: { label: 'İZBAN', title: 'Tren de cercanías İZBAN', body: 'La línea norte–sur para en Halkapınar: al norte hacia Karşıyaka y Menemen, al sur hacia Gaziemir y el aeropuerto.', stops: ['Karşıyaka · Menemen · Aliağa', 'Gaziemir · Aeropuerto', 'Cumaovası · Torbalı'] },
+          tram: { label: 'Tranvía', title: 'Tranvía de Konak', body: 'Sale de Halkapınar y recorre Alsancak y el Kordon hasta Konak. La forma más cómoda de llegar al paseo marítimo.', stops: ['Alsancak', 'Kordon · Gazi Bulvarı', 'Konak · Fahrettin Altay'] },
+          air: { label: 'Aeropuerto', title: 'Aeropuerto Adnan Menderes', body: 'Desde Halkapınar en İZBAN, directo al aeropuerto sin transbordo. Duración: [Duración].', stops: ['Halkapınar → Aeropuerto (İZBAN)', '[Info Havaş / autobús]', '[Parada de taxis]'] }
+        },
+        cats: { all: 'Todos', food: 'Comer y beber', shop: 'Compras', service: 'Servicios', health: 'Salud', sport: 'Deporte y cultura' },
+        shops: ['Cafetería', 'Restaurante', 'Supermercado', 'Boutique', 'Peluquería', 'Tintorería', 'Farmacia', 'Clínica dental', 'Gimnasio', 'Club de tenis'],
+        life: [
+          ['Ópera', 'Sala de ópera y teatro', 'La primera sala con foso de orquesta en un complejo residencial de Turquía.'],
+          ['1000', 'Personas de aforo', 'Espacio para conciertos, festivales y grandes eventos.'],
+          ['Cine', 'Cine', 'Estrenos a un paseo de casa.'],
+          ['Museo', 'Museo y biblioteca', 'Un museo sobre la historia del lugar y zonas de lectura tranquilas.'],
+          ['Tenis', 'Club de tenis', 'Pistas e instalaciones: [Info de reservas].'],
+          ['Correr', 'Carril para correr y bici', 'Un recorrido verde entre árboles centenarios.']
+        ],
+        ev: ['[Día]', '[Mes]', '[Nombre del evento]', '[Lugar · Hora]'],
+        board: ['Técnico recomendado', 'Objetos perdidos', 'Viajes compartidos', 'Ayuda mutua']
+      },
+      fr: {
+        t: {
+          navTransit: 'Transports', navShops: 'Commerces', navLife: 'Vie locale', navEvents: 'Événements', navNeighbours: 'Voisins',
+          heroTitle: 'La vie de quartier à Mahall Bomonti',
+          heroSub: 'Pour celles et ceux qui vivent dans le plus haut bâtiment d’İzmir : transports, commerces, événements et tableau des voisins, au même endroit.',
+          ctaShops: 'Découvrir les commerces', ctaTransit: 'Voir les transports', videoLabel: '[Vidéo de drone à insérer ici]', quickTitle: 'Infos pratiques',
+          transitEyebrow: 'Transports', transitTitle: 'Proche de tout',
+          transitSub: 'Le pôle d’échanges de Halkapınar, où se croisent métro, İZBAN et tramway, est à cinq minutes à pied.',
+          liveNote: '[Les départs en temps réel s’afficheront ici]',
+          shopsEyebrow: 'Annuaire', shopsTitle: 'Commerces de la résidence',
+          shopsSub: 'Du café à la pharmacie, du coiffeur à la salle de sport : tous les commerces dans et autour de la résidence.',
+          filterLabel: 'Filtre par catégorie', shopName: '[Nom du commerce]', shopMeta: '[Bloc · Étage] · [Horaires]', route: 'Itinéraire',
+          addShopTitle: 'Ajoutez votre commerce', addShopSub: 'La fiche de base est gratuite. Écrivez-nous pour une mise en avant.', addShopCta: 'Écrire sur WhatsApp',
+          lifeEyebrow: 'Vie & culture', lifeTitle: 'Culture et sport au pied de l’immeuble',
+          eventsEyebrow: 'Agenda', eventsTitle: 'Prochains événements', eventMore: 'Détails',
+          nbEyebrow: 'Voisins', nbTitle: 'Tableau des voisins',
+          nbSub: 'Artisans recommandés, objets trouvés, covoiturage et entraide : de voisin à voisin.',
+          postText: '[Texte de l’annonce]', postMeta: '[Nom] · [Date]',
+          formTitle: 'Publier une annonce', formLabelTitle: 'Titre', formLabelText: 'Texte', formSubmit: 'Publier',
+          formKvkk: 'Les annonces sont publiées uniquement sur ce tableau, conformément à la loi turque sur la protection des données (KVKK). Ne partagez ni numéro de téléphone ni numéro d’appartement.',
+          histSince: 'Fondation de l’usine Bomonti', histTitle: 'Entre histoire et vie moderne',
+          histBody: 'Mahall Bomonti doit son nom à l’usine historique Bomonti qui se trouvait ici. Le projet compte 12 blocs, dont 9 bâtiments historiques restaurés.',
+          disclaimer: 'Portail indépendant des résidents. Aucun lien officiel avec Mahall Bomonti ou Türkerler Holding.',
+          fPrivacy: 'Confidentialité (KVKK)', fContact: 'Contact'
+        },
+        min: '5 min', stats: ['Hauteur · le plus haut d’İzmir', 'Étages', 'à pied jusqu’à Halkapınar', 'Espaces verts'],
+        quick: ['Urgences', 'Gestion de la résidence', 'Doğan Bey', 'Publicité & technique · Özkan', 'Stationnement'], info: '[Info]',
+        route: [['Mahall Bomonti', 'Départ'], ['Station de métro', '≈ 400 m'], ['Pôle Halkapınar', '5 min à pied'], ['Alsancak · Kordon', '≈ 10 min'], ['Konak · Karşıyaka', 'quelques minutes']],
+        tabs: {
+          metro: { label: 'Métro', title: 'Métro d’İzmir · Halkapınar', body: 'La station de métro Halkapınar est à environ 400 mètres de l’immeuble. La ligne relie directement le centre-ville à Bornova.', stops: STOP_M },
+          izban: { label: 'İZBAN', title: 'Train de banlieue İZBAN', body: 'La ligne nord–sud s’arrête à Halkapınar : au nord vers Karşıyaka et Menemen, au sud vers Gaziemir et l’aéroport.', stops: ['Karşıyaka · Menemen · Aliağa', 'Gaziemir · Aéroport', 'Cumaovası · Torbalı'] },
+          tram: { label: 'Tramway', title: 'Tramway de Konak', body: 'Au départ de Halkapınar, le tramway longe Alsancak et le Kordon jusqu’à Konak. Le chemin le plus simple vers le front de mer.', stops: ['Alsancak', 'Kordon · Gazi Bulvarı', 'Konak · Fahrettin Altay'] },
+          air: { label: 'Aéroport', title: 'Aéroport Adnan Menderes', body: 'Depuis Halkapınar, l’İZBAN mène à l’aéroport sans correspondance. Durée : [Durée].', stops: ['Halkapınar → Aéroport (İZBAN)', '[Infos Havaş / bus]', '[Station de taxis]'] }
+        },
+        cats: { all: 'Tous', food: 'Restauration', shop: 'Shopping', service: 'Services', health: 'Santé', sport: 'Sport & culture' },
+        shops: ['Café', 'Restaurant', 'Supermarché', 'Boutique', 'Coiffeur', 'Pressing', 'Pharmacie', 'Cabinet dentaire', 'Salle de sport', 'Club de tennis'],
+        life: [
+          ['Opéra', 'Salle d’opéra et de théâtre', 'La première salle avec fosse d’orchestre dans une résidence en Turquie.'],
+          ['1000', 'Places pour les événements', 'Pour concerts, festivals et grands événements.'],
+          ['Cinéma', 'Cinéma', 'Les films à l’affiche, à deux pas.'],
+          ['Musée', 'Musée et bibliothèque', 'Un musée sur l’histoire du site et des espaces de lecture au calme.'],
+          ['Tennis', 'Club de tennis', 'Courts et installations : [Infos réservation].'],
+          ['Course', 'Piste de course et vélo', 'Un parcours vert parmi des arbres centenaires.']
+        ],
+        ev: ['[Jour]', '[Mois]', '[Nom de l’événement]', '[Lieu · Heure]'],
+        board: ['Artisan recommandé', 'Objets trouvés', 'Covoiturage', 'Entraide']
+      },
+      ru: {
+        t: {
+          navTransit: 'Транспорт', navShops: 'Магазины', navLife: 'Жизнь', navEvents: 'События', navNeighbours: 'Соседи',
+          heroTitle: 'Соседская жизнь в Mahall Bomonti',
+          heroSub: 'Для всех, кто живёт в самом высоком здании Измира: транспорт, магазины, события и доска соседей — в одном месте.',
+          ctaShops: 'Смотреть магазины', ctaTransit: 'Транспорт', videoLabel: '[Здесь будет видео с дрона]', quickTitle: 'Быстрая информация',
+          transitEyebrow: 'Транспорт', transitTitle: 'Рядом со всем',
+          transitSub: 'Пересадочный узел Halkapınar, где сходятся метро, İZBAN и трамвай, в пяти минутах пешком.',
+          liveNote: '[Здесь будет расписание в реальном времени]',
+          shopsEyebrow: 'Справочник', shopsTitle: 'Магазины и услуги комплекса',
+          shopsSub: 'От кафе до аптеки, от парикмахерской до спортзала: все заведения в комплексе и рядом с ним.',
+          filterLabel: 'Фильтр по категориям', shopName: '[Название заведения]', shopMeta: '[Блок · Этаж] · [Часы работы]', route: 'Маршрут',
+          addShopTitle: 'Добавьте своё заведение', addShopSub: 'Базовое размещение бесплатно. Для выделенного места напишите нам.', addShopCta: 'Написать в WhatsApp',
+          lifeEyebrow: 'Жизнь и культура', lifeTitle: 'Культура и спорт у порога',
+          eventsEyebrow: 'Календарь', eventsTitle: 'Ближайшие события', eventMore: 'Подробнее',
+          nbEyebrow: 'Соседи', nbTitle: 'Доска соседей',
+          nbSub: 'Проверенные мастера, потерянные вещи, совместные поездки и взаимопомощь — от соседа к соседу.',
+          postText: '[Текст объявления]', postMeta: '[Имя] · [Дата]',
+          formTitle: 'Разместить объявление', formLabelTitle: 'Заголовок', formLabelText: 'Текст', formSubmit: 'Опубликовать',
+          formKvkk: 'Объявления публикуются только на этой доске в соответствии с турецким законом о защите данных (KVKK). Не указывайте номера телефонов и квартир.',
+          histSince: 'Основание фабрики Bomonti', histTitle: 'История и современная жизнь',
+          histBody: 'Mahall Bomonti назван в честь исторической фабрики Bomonti, стоявшей на этом месте. Проект включает 12 блоков, 9 из которых — отреставрированные исторические здания.',
+          disclaimer: 'Независимый портал жителей. Официально не связан с Mahall Bomonti или Türkerler Holding.',
+          fPrivacy: 'Конфиденциальность (KVKK)', fContact: 'Контакты'
+        },
+        min: '5 мин', stats: ['Высота · самое высокое в Измире', 'Этажей', 'пешком до Halkapınar', 'Зелёные зоны'],
+        quick: ['Экстренная помощь', 'Управляющая компания', 'Doğan Bey', 'Реклама и техника · Özkan', 'Парковка'], info: '[Инфо]',
+        route: [['Mahall Bomonti', 'Старт'], ['Станция метро', '≈ 400 м'], ['Пересадка Halkapınar', '5 мин пешком'], ['Alsancak · Kordon', '≈ 10 мин'], ['Konak · Karşıyaka', 'несколько минут']],
+        tabs: {
+          metro: { label: 'Метро', title: 'Метро Измира · Halkapınar', body: 'Станция метро Halkapınar примерно в 400 метрах от здания. Линия напрямую связывает центр города с Bornova.', stops: STOP_M },
+          izban: { label: 'İZBAN', title: 'Пригородные поезда İZBAN', body: 'Линия север–юг останавливается в Halkapınar: на север к Karşıyaka и Menemen, на юг к Gaziemir и аэропорту.', stops: ['Karşıyaka · Menemen · Aliağa', 'Gaziemir · Аэропорт', 'Cumaovası · Torbalı'] },
+          tram: { label: 'Трамвай', title: 'Трамвай Konak', body: 'От Halkapınar трамвай идёт через Alsancak и Kordon до Konak. Самый удобный путь к набережной.', stops: ['Alsancak', 'Kordon · Gazi Bulvarı', 'Konak · Fahrettin Altay'] },
+          air: { label: 'Аэропорт', title: 'Аэропорт Аднан Мендерес', body: 'От Halkapınar на İZBAN до аэропорта без пересадок. Время в пути: [Время].', stops: ['Halkapınar → Аэропорт (İZBAN)', '[Havaş / автобусы]', '[Стоянка такси]'] }
+        },
+        cats: { all: 'Все', food: 'Еда и напитки', shop: 'Покупки', service: 'Услуги', health: 'Здоровье', sport: 'Спорт и культура' },
+        shops: ['Кафе', 'Ресторан', 'Супермаркет', 'Бутик', 'Парикмахерская', 'Химчистка', 'Аптека', 'Стоматология', 'Спортзал', 'Теннисный клуб'],
+        life: [
+          ['Опера', 'Оперный и театральный зал', 'Первый в Турции зал с оркестровой ямой в жилом комплексе.'],
+          ['1000', 'Мест на площадке', 'Для концертов, фестивалей и крупных мероприятий.'],
+          ['Кино', 'Кинотеатр', 'Новые фильмы в шаговой доступности.'],
+          ['Музей', 'Музей и библиотека', 'Музей об истории места и тихие зоны для чтения.'],
+          ['Теннис', 'Теннисный клуб', 'Корты и клубные услуги: [Бронирование].'],
+          ['Бег', 'Беговая и велодорожка', 'Зелёный маршрут среди столетних деревьев.']
+        ],
+        ev: ['[День]', '[Месяц]', '[Название события]', '[Место · Время]'],
+        board: ['Рекомендую мастера', 'Потерянные вещи', 'Попутчики', 'Взаимопомощь']
+      }
+    };
+    if (!L[lang]) lang = 'tr';
+    const D = L[lang];
+
+    const langs = LANGS.map((l) => ({
+      code: l.code.toUpperCase(), name: l.name, active: l.code === lang, inactive: l.code !== lang,
+      pick: () => this.setState({ lang: l.code, langOpen: false })
+    }));
+    const langOpen = !!st.langOpen;
+    const curCode = lang.toUpperCase();
+    const toggleLang = () => this.setState({ langOpen: !langOpen });
+
+    const WXL = {
+      tr: ['Halkapınar hava durumu', 'Hissedilen', 'Rüzgâr', 'Yağış ihtimali', 'Bugün', '[Hava durumu]', '[Önümüzdeki 3 günün uyarıları burada görünecek]', 'Ölçüm saati', 'Mahalle koordinatı', 'Kaynak'],
+      de: ['Wetter in Halkapınar', 'Gefühlt', 'Wind', 'Regenwahrscheinlichkeit', 'Heute', '[Wetterlage]', '[Hier erscheinen Warnungen für die nächsten 3 Tage]', 'Messzeit', 'Koordinaten', 'Quelle'],
+      en: ['Halkapınar weather', 'Feels like', 'Wind', 'Chance of rain', 'Today', '[Conditions]', '[Alerts for the next 3 days will appear here]', 'Measured at', 'Coordinates', 'Source'],
+      ko: ['Halkapınar 날씨', '체감', '바람', '강수 확률', '오늘', '[날씨 상태]', '[향후 3일간의 기상 특보가 여기에 표시됩니다]', '측정 시각', '좌표', '출처'],
+      es: ['El tiempo en Halkapınar', 'Sensación', 'Viento', 'Prob. de lluvia', 'Hoy', '[Estado del cielo]', '[Aquí aparecerán los avisos de los próximos 3 días]', 'Hora de medición', 'Coordenadas', 'Fuente'],
+      fr: ['Météo à Halkapınar', 'Ressenti', 'Vent', 'Risque de pluie', 'Auj.', '[Conditions]', '[Les alertes des 3 prochains jours s’afficheront ici]', 'Mesuré à', 'Coordonnées', 'Source'],
+      ru: ['Погода в Halkapınar', 'Ощущается', 'Ветер', 'Вероятность осадков', 'Сегодня', '[Погодные условия]', '[Здесь появятся предупреждения на 3 дня]', 'Время измерения', 'Координаты', 'Источник']
+    };
+    const W = WXL[lang];
+    const fmtDay = (d) => {
+      let s = '';
+      try { s = new Intl.DateTimeFormat(lang, { weekday: 'short', timeZone: 'Europe/Istanbul' }).format(d); } catch (e) { s = ''; }
+      return s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+    };
+    const now = new Date();
+    const wx = {
+      title: W[0], feels: W[1], wind: W[2], rain: W[3], cond: W[5], alert: W[6],
+      footer: W[7] + ': [--:--] · ' + W[8] + ' 38.438, 27.160', src: W[9] + ': Open-Meteo',
+      days: [0, 1, 2, 3, 4, 5, 6].map((i) => ({ name: i === 0 ? W[4] : fmtDay(new Date(now.getTime() + i * 86400000)) }))
+    };
+    const ANN = {
+      tr: { eyebrow: 'Duyurular', title: 'Yönetimden duyurular', tEvent: 'Etkinlik', tOffice: 'Ofis', call: 'Ara', mon: 'Eki',
+        pDate: '30 Ekim 2026, Cuma · 20.00', pTitle: 'Kostüm partisi', pBody: 'MAC Studio ve Chinese Sushi Express iş birliğiyle düzenlenen kostüm partisine tüm sakinler davetli. Renkli kostümler ve eğlenceli bir atmosfer sizi bekliyor.',
+        oDate: 'Cuma gününe kadar kapalı', oTitle: 'Yönetim ofisi Cumhuriyet Bayramı’nda kapalı', oBody: '29 Ekim Cumhuriyet Bayramı nedeniyle ofis Cuma gününe kadar kapalı. İhtiyaç halinde aşağıdaki numaralardan ulaşabilirsiniz. Cumhuriyet Bayramımız kutlu olsun!',
+        c: ['A1 Ofis', 'A1 Blok', 'A2 Blok', 'Güvenlik vardiya amiri'] },
+      de: { eyebrow: 'Aushänge', title: 'Mitteilungen der Verwaltung', tEvent: 'Event', tOffice: 'Büro', call: 'Anrufen', mon: 'Okt',
+        pDate: 'Fr., 30. Oktober 2026 · 20:00 Uhr', pTitle: 'Kostümparty', pBody: 'Alle Bewohner sind zur Kostümparty von MAC Studio und Chinese Sushi Express eingeladen. Bunte Kostüme und gute Stimmung erwarten euch.',
+        oDate: 'Bis Freitag geschlossen', oTitle: 'Verwaltungsbüro zum Tag der Republik geschlossen', oBody: 'Wegen des Tags der Republik am 29. Oktober bleibt das Büro bis Freitag geschlossen. Bei Bedarf erreicht ihr das Team unter diesen Nummern.',
+        c: ['Büro A1', 'Block A1', 'Block A2', 'Sicherheit · Schichtleitung'] },
+      en: { eyebrow: 'Notices', title: 'Notices from management', tEvent: 'Event', tOffice: 'Office', call: 'Call', mon: 'Oct',
+        pDate: 'Fri 30 October 2026 · 8:00 pm', pTitle: 'Costume party', pBody: 'All residents are invited to a costume party hosted by MAC Studio and Chinese Sushi Express. Colourful costumes and a fun atmosphere await.',
+        oDate: 'Closed until Friday', oTitle: 'Management office closed for Republic Day', oBody: 'The office is closed until Friday for Republic Day on 29 October. If you need help, reach the team on these numbers.',
+        c: ['A1 Office', 'Block A1', 'Block A2', 'Security shift supervisor'] },
+      ko: { eyebrow: '공지', title: '관리사무소 공지', tEvent: '행사', tOffice: '사무실', call: '전화', mon: '10월',
+        pDate: '2026년 10월 30일 (금) · 20:00', pTitle: '코스튬 파티', pBody: 'MAC Studio와 Chinese Sushi Express가 함께 여는 코스튬 파티에 모든 주민을 초대합니다. 화려한 의상과 즐거운 분위기가 기다립니다.',
+        oDate: '금요일까지 휴무', oTitle: '공화국의 날 관리사무소 휴무', oBody: '10월 29일 공화국의 날로 사무실은 금요일까지 문을 닫습니다. 필요하시면 아래 번호로 연락해 주세요.',
+        c: ['A1 사무실', 'A1동', 'A2동', '경비 근무 책임자'] },
+      es: { eyebrow: 'Avisos', title: 'Avisos de la administración', tEvent: 'Evento', tOffice: 'Oficina', call: 'Llamar', mon: 'oct',
+        pDate: 'Viernes 30 de octubre de 2026 · 20:00', pTitle: 'Fiesta de disfraces', pBody: 'Todos los residentes están invitados a la fiesta de disfraces de MAC Studio y Chinese Sushi Express. Te esperan disfraces de colores y muy buen ambiente.',
+        oDate: 'Cerrada hasta el viernes', oTitle: 'Oficina cerrada por el Día de la República', oBody: 'Por el Día de la República (29 de octubre), la oficina permanece cerrada hasta el viernes. Si lo necesitas, contacta al equipo en estos números.',
+        c: ['Oficina A1', 'Bloque A1', 'Bloque A2', 'Jefe de turno de seguridad'] },
+      fr: { eyebrow: 'Annonces', title: 'Annonces de la gestion', tEvent: 'Événement', tOffice: 'Bureau', call: 'Appeler', mon: 'oct.',
+        pDate: 'Vendredi 30 octobre 2026 · 20 h', pTitle: 'Soirée déguisée', pBody: 'Tous les résidents sont invités à la soirée déguisée organisée par MAC Studio et Chinese Sushi Express. Costumes colorés et ambiance festive au rendez-vous.',
+        oDate: 'Fermé jusqu’à vendredi', oTitle: 'Bureau fermé pour la fête de la République', oBody: 'En raison de la fête de la République du 29 octobre, le bureau est fermé jusqu’à vendredi. En cas de besoin, joignez l’équipe à ces numéros.',
+        c: ['Bureau A1', 'Bloc A1', 'Bloc A2', 'Chef de poste sécurité'] },
+      ru: { eyebrow: 'Объявления', title: 'Объявления управляющей компании', tEvent: 'Событие', tOffice: 'Офис', call: 'Позвонить', mon: 'окт',
+        pDate: 'Пятница, 30 октября 2026 · 20:00', pTitle: 'Костюмированная вечеринка', pBody: 'Все жители приглашены на костюмированную вечеринку от MAC Studio и Chinese Sushi Express. Вас ждут яркие костюмы и весёлая атмосфера.',
+        oDate: 'Закрыт до пятницы', oTitle: 'Офис закрыт в День Республики', oBody: 'В связи с Днём Республики 29 октября офис закрыт до пятницы. При необходимости звоните по этим номерам.',
+        c: ['Офис A1', 'Блок A1', 'Блок A2', 'Начальник смены охраны'] }
+    };
+    const A = ANN[lang];
+    const NUMS = [['0533 063 54 03', '+905330635403'], ['0533 063 57 85', '+905330635785'], ['0531 289 90 34', '+905312899034'], ['0533 063 68 37', '+905330636837']];
+    const ann = { ...A, contacts: NUMS.map((n, i) => ({ label: A.c[i], num: n[0], href: 'tel:' + n[1] })) };
+    const stats = ['242 m', '60', D.min, '20.000+ m²'].map((v, i) => ({ value: v, label: D.stats[i] }));
+
+    const quick = [
+      { label: D.quick[0], value: '112', wa: false },
+      { label: D.quick[1], value: PH.yon, wa: true, href: WA_YONETIM },
+      { label: D.quick[2], value: PH.dog, wa: true, href: WA_DOGAN },
+      { label: D.quick[3], value: PH.ozk, wa: true, href: WA_OZKAN }
+    ].map((q) => ({ ...q, isInfo: !q.isWx, hasSub: !!q.sub }));
+
+    const route = D.route.map((r, i) => ({ name: r[0], time: r[1], dot: i === 0 ? '#E8772E' : '#1F5FAE' }));
+
+    const tabs = ['metro', 'izban', 'tram', 'air'].map((id) => ({
+      label: D.tabs[id].label, active: id === tab, inactive: id !== tab,
+      pick: () => this.setState({ tab: id })
+    }));
+
+    const cats = Object.keys(D.cats).map((id) => ({
+      label: D.cats[id], active: id === cat, inactive: id !== cat,
+      pick: () => this.setState({ cat: id })
+    }));
+    const SHOP_CATS = ['food', 'food', 'shop', 'shop', 'service', 'service', 'health', 'health', 'sport', 'sport'];
+    const shops = SHOP_CATS.map((c, i) => ({ c, type: D.shops[i], catLabel: D.cats[c] }))
+      .filter((s) => cat === 'all' || s.c === cat);
+
+    const life = D.life.map((l) => ({ big: l[0], title: l[1], body: l[2] }));
+    const events = [{ day: '30', month: A.mon, title: A.pTitle, place: 'Chinese Sushi Express · 20:00' }]
+      .concat([1, 2].map(() => ({ day: D.ev[0], month: D.ev[1], title: D.ev[2], place: D.ev[3] })));
+    const board = D.board.map((tag) => ({ tag }));
+
+    return { wx, ann, lang, langs, langOpen, curCode, toggleLang, t: D.t, stats, quick, route, tabs, cur: D.tabs[tab], cats, shops, life, events, board };
+  }
+}
+
+const comp = new Component();
+try { const saved = localStorage.getItem('bomonti-lang'); if (saved) comp.state.lang = saved; } catch (e) {}
+
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+let H = [];
+const on = (fn) => { H.push(fn); return 'data-h="' + (H.length - 1) + '"'; };
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-h]');
+  if (el) { e.preventDefault(); const fn = H[+el.dataset.h]; if (fn) fn(); return; }
+  if (comp.state.langOpen && !e.target.closest('.lang')) comp.setState({ langOpen: false });
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && comp.state.langOpen) comp.setState({ langOpen: false }); });
+
+/* ---- icons ---- */
+const I = {
+  wa: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12z"/></svg>',
+  phone: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+  info: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>',
+  arrow: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  pin: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F39A5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>',
+  globe: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z"/></svg>',
+  chev: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+  play: '<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#F39A5B" stroke-width="2" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="M13 10.5v11l9-5.5z" fill="#F39A5B"/></svg>',
+  tower: '<svg width="28" height="36" viewBox="0 0 28 36" fill="none" stroke="#E8772E" stroke-width="2" aria-hidden="true"><path d="M9 34V8l5-6 5 6v26"/><path d="M3 34h22"/><path d="M12 14h4M12 20h4M12 26h4"/></svg>'
+};
+const CLOUD = '<path d="M18 42a10 10 0 0 1 1-20 14 14 0 0 1 26 3 9 9 0 0 1 1 17z" fill="#5B6B80"/>';
+function wxIcon(kind, s) {
+  const sun = '<circle cx="32" cy="32" r="11" fill="#F2A33A"/><g stroke="#F2A33A" stroke-width="3.5" stroke-linecap="round"><path d="M32 8v6M32 50v6M8 32h6M50 32h6M15 15l4 4M45 45l4 4M15 49l4-4M45 19l4-4"/></g>';
+  const b = {
+    clear: sun,
+    partly: '<g transform="translate(-6,-8) scale(.8)">' + sun + '</g><path d="M22 50a9 9 0 0 1 1-18 12 12 0 0 1 23 3 8 8 0 0 1 1 15z" fill="#7A8AA0"/>',
+    cloud: CLOUD,
+    fog: '<g stroke="#5B6B80" stroke-width="4" stroke-linecap="round"><path d="M12 24h40M8 34h48M14 44h36"/></g>',
+    rain: CLOUD + '<path d="M24 47l-2 7M33 47l-2 7M42 47l-2 7" stroke="#2F7BD8" stroke-width="3.5" stroke-linecap="round"/>',
+    snow: CLOUD + '<g fill="#8FB6E8"><circle cx="24" cy="51" r="3"/><circle cx="33" cy="55" r="3"/><circle cx="42" cy="51" r="3"/></g>',
+    storm: CLOUD + '<path d="M34 42l-7 10h6l-4 9 10-12h-6l4-7z" fill="#F2A33A"/>'
+  }[kind] || CLOUD;
+  return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 64 64" aria-hidden="true">' + b + '</svg>';
+}
+
+/* ---- live weather (Open-Meteo, no API key) ---- */
+const WX_LAT = 38.438, WX_LON = 27.160;
+let WXD = null, WXERR = false;
+const WXT = {
+  tr: { c: ['Açık', 'Az bulutlu', 'Parçalı bulutlu', 'Kapalı', 'Sisli', 'Çisenti', 'Yağmurlu', 'Karlı', 'Gök gürültülü'], ok: 'Önümüzdeki 3 günde don veya dolu beklenmiyor.', frost: 'Dikkat: önümüzdeki 3 günde don bekleniyor.', storm: 'Dikkat: önümüzdeki 3 günde gök gürültülü fırtına veya dolu bekleniyor.', load: 'Hava durumu yükleniyor…', err: 'Hava durumu şu an alınamadı.', u: 'km/sa', d: ['K', 'KD', 'D', 'GD', 'G', 'GB', 'B', 'KB'] },
+  de: { c: ['Klar', 'Überwiegend klar', 'Teilweise bewölkt', 'Bedeckt', 'Nebel', 'Nieselregen', 'Regen', 'Schnee', 'Gewitter'], ok: 'In den nächsten 3 Tagen wird kein Frost oder Hagel erwartet.', frost: 'Achtung: In den nächsten 3 Tagen ist Frost möglich.', storm: 'Achtung: In den nächsten 3 Tagen sind Gewitter oder Hagel möglich.', load: 'Wetter wird geladen…', err: 'Wetterdaten derzeit nicht verfügbar.', u: 'km/h', d: ['N', 'NO', 'O', 'SO', 'S', 'SW', 'W', 'NW'] },
+  en: { c: ['Clear', 'Mostly clear', 'Partly cloudy', 'Overcast', 'Fog', 'Drizzle', 'Rain', 'Snow', 'Thunderstorm'], ok: 'No frost or hail expected in the next 3 days.', frost: 'Heads up: frost is possible in the next 3 days.', storm: 'Heads up: thunderstorms or hail are possible in the next 3 days.', load: 'Loading weather…', err: 'Weather data is unavailable right now.', u: 'km/h', d: ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'] },
+  ko: { c: ['맑음', '대체로 맑음', '구름 조금', '흐림', '안개', '이슬비', '비', '눈', '뇌우'], ok: '향후 3일간 서리나 우박은 예상되지 않습니다.', frost: '주의: 향후 3일 내 서리가 예상됩니다.', storm: '주의: 향후 3일 내 뇌우나 우박이 예상됩니다.', load: '날씨 불러오는 중…', err: '지금은 날씨 정보를 가져올 수 없습니다.', u: 'km/h', d: ['북', '북동', '동', '남동', '남', '남서', '서', '북서'] },
+  es: { c: ['Despejado', 'Mayormente despejado', 'Parcialmente nublado', 'Nublado', 'Niebla', 'Llovizna', 'Lluvia', 'Nieve', 'Tormenta'], ok: 'No se esperan heladas ni granizo en los próximos 3 días.', frost: 'Atención: posibles heladas en los próximos 3 días.', storm: 'Atención: posibles tormentas o granizo en los próximos 3 días.', load: 'Cargando el tiempo…', err: 'El tiempo no está disponible ahora mismo.', u: 'km/h', d: ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'] },
+  fr: { c: ['Dégagé', 'Plutôt dégagé', 'Partiellement nuageux', 'Couvert', 'Brouillard', 'Bruine', 'Pluie', 'Neige', 'Orage'], ok: 'Ni gel ni grêle attendus dans les 3 prochains jours.', frost: 'Attention : gel possible dans les 3 prochains jours.', storm: 'Attention : orages ou grêle possibles dans les 3 prochains jours.', load: 'Chargement de la météo…', err: 'Météo indisponible pour le moment.', u: 'km/h', d: ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'] },
+  ru: { c: ['Ясно', 'Преимущественно ясно', 'Переменная облачность', 'Пасмурно', 'Туман', 'Морось', 'Дождь', 'Снег', 'Гроза'], ok: 'В ближайшие 3 дня заморозков и града не ожидается.', frost: 'Внимание: в ближайшие 3 дня возможны заморозки.', storm: 'Внимание: в ближайшие 3 дня возможны грозы или град.', load: 'Загрузка погоды…', err: 'Данные о погоде сейчас недоступны.', u: 'км/ч', d: ['С', 'СВ', 'В', 'ЮВ', 'Ю', 'ЮЗ', 'З', 'СЗ'] }
+};
+function wxCat(code) {
+  if (code === 0) return [0, 'clear']; if (code === 1) return [1, 'partly']; if (code === 2) return [2, 'partly']; if (code === 3) return [3, 'cloud'];
+  if (code === 45 || code === 48) return [4, 'fog']; if (code >= 51 && code <= 57) return [5, 'rain'];
+  if ((code >= 61 && code <= 67) || (code >= 80 && code <= 82)) return [6, 'rain'];
+  if ((code >= 71 && code <= 77) || code === 85 || code === 86) return [7, 'snow']; if (code >= 95) return [8, 'storm'];
+  return [3, 'cloud'];
+}
+async function loadWeather() {
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + WX_LAT + '&longitude=' + WX_LON +
+    '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,precipitation_probability' +
+    '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FIstanbul&forecast_days=7';
+  try {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(r.status);
+    WXD = await r.json(); WXERR = false;
+  } catch (e) { WXERR = true; }
+  render();
+}
+
+/* ---- rendering ---- */
+function header(v) {
+  const t = v.t;
+  const menu = v.langOpen ? '<ul class="lang-menu">' + v.langs.map((l) =>
+    '<li><button type="button" ' + on(() => { try { localStorage.setItem('bomonti-lang', l.code.toLowerCase()); } catch (e) {} l.pick(); }) + (l.active ? ' aria-current="true"' : '') + '><span>' + esc(l.name) + '</span><small>' + esc(l.code) + '</small></button></li>').join('') + '</ul>' : '';
+  return '<header><div class="wrap hdr">' +
+    '<a class="logo" href="#top">' + I.tower + '<span>Bomonti Komşu</span></a>' +
+    '<nav class="main" aria-label="Menu">' +
+      '<a href="#duyurular">' + esc(v.ann.eyebrow) + '</a><a href="#hava">' + esc(v.wx.navLabel) + '</a><a href="#ulasim">' + esc(t.navTransit) + '</a><a href="#isletmeler">' + esc(t.navShops) + '</a><a href="#yasam">' + esc(t.navLife) + '</a><a href="#etkinlik">' + esc(t.navEvents) + '</a><a href="#komsular">' + esc(t.navNeighbours) + '</a>' +
+    '</nav>' +
+    '<div class="lang"><button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="' + v.langOpen + '" aria-label="Dil · Language" ' + on(v.toggleLang) + '>' + I.globe + '<span>' + esc(v.curCode) + '</span>' + I.chev + '</button>' + menu + '</div>' +
+  '</div></header>';
+}
+function hero(v) {
+  const t = v.t;
+  return '<section id="top" class="hero"><div class="wrap hero-in">' +
+    '<div class="hero-txt"><p style="margin:0;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F39A5B">Konak · Halkapınar · İzmir</p>' +
+    '<h1>' + esc(t.heroTitle) + '</h1><p class="sub">' + esc(t.heroSub) + '</p>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:8px"><a href="#isletmeler" class="btn" style="min-height:48px;padding:0 24px;background:#E8772E;color:#0E1A2B">' + esc(t.ctaShops) + '</a><a href="#ulasim" class="btn" style="min-height:48px;padding:0 24px;border:1px solid #4A6080;color:#fff">' + esc(t.ctaTransit) + '</a></div></div>' +
+    '<figure class="hero-media">' +
+      /* Drone video: put bomonti.mp4 next to index.html and replace the <svg class="bg"> below with:
+         <video class="bg" src="bomonti.mp4" autoplay muted loop playsinline poster="bomonti.jpg"></video> */
+      '<svg class="bg" viewBox="0 0 300 420" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M0 360 Q75 340 150 352 T300 346 V420 H0Z" fill="#1B3350"/><path d="M134 360V70l16-34 16 34v290Z" fill="#20365A" stroke="#E8772E" stroke-width="1.5"/><path d="M142 100h16M142 130h16M142 160h16M142 190h16M142 220h16M142 250h16M142 280h16M142 310h16" stroke="#5B7BA6" stroke-width="2"/><rect x="60" y="300" width="50" height="60" fill="#1A2E4A" stroke="#3B5578"/><rect x="190" y="290" width="60" height="70" fill="#1A2E4A" stroke="#3B5578"/></svg>' +
+      '<figcaption>' + I.play + '<span>' + esc(t.videoLabel) + '</span></figcaption></figure>' +
+  '</div><div class="wrap" style="padding-bottom:56px"><dl class="stats">' +
+    v.stats.map((s) => '<div><dt>' + esc(s.label) + '</dt><dd>' + esc(s.value) + '</dd></div>').join('') +
+  '</dl></div></section>';
+}
+function quick(v) {
+  return '<section class="wrap" style="padding-top:40px" aria-label="' + esc(v.t.quickTitle) + '"><div class="grid quick">' +
+    v.quick.map((q) => '<div class="card qcard"><div class="qicon">' + I.info + '</div><div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-size:14px;color:var(--muted)">' + esc(q.label) + '</span><strong style="font-size:17px;font-weight:600">' + (q.wa ? esc(q.value) : '<a href="tel:112" style="color:inherit;text-decoration:none">' + esc(q.value) + '</a>') + '</strong>' +
+      (q.wa ? '<a class="btn btn-wa" style="margin-top:6px;align-self:flex-start;min-height:40px;padding:0 14px" href="' + esc(q.href) + '" target="_blank" rel="noopener">' + I.wa + 'WhatsApp</a>' : '') + '</div></div>').join('') +
+  '</div></section>';
+}
+function weather(v) {
+  const w = v.wx, T = WXT[v.lang] || WXT.tr;
+  let icon = wxIcon('cloud', 76), temp = '--°', cond = WXERR ? T.err : T.load, feels = '--°C', wind = '-- ' + T.u, rain = '%--', alert = WXERR ? T.err : T.load, warn = false, time = '--:--';
+  let days = w.days.map((d) => ({ name: d.name, icon: wxIcon('cloud', 30), hi: '--°', lo: '--°', p: '%--' }));
+  if (WXD && WXD.current) {
+    const c = WXD.current, k = wxCat(c.weather_code);
+    icon = wxIcon(k[1], 76); temp = Math.round(c.temperature_2m) + '°'; cond = T.c[k[0]];
+    feels = Math.round(c.apparent_temperature) + '°C';
+    wind = Math.round(c.wind_speed_10m) + ' ' + T.u + ' ' + T.d[Math.round(((c.wind_direction_10m % 360) / 45)) % 8];
+    rain = c.precipitation_probability != null ? '%' + c.precipitation_probability : '%' + (WXD.daily.precipitation_probability_max[0] ?? '--');
+    time = (c.time || '').slice(11, 16);
+    const D3 = [0, 1, 2], dl = WXD.daily;
+    const frost = D3.some((i) => dl.temperature_2m_min[i] <= 0);
+    const storm = D3.some((i) => dl.weather_code[i] >= 95);
+    alert = storm ? T.storm : frost ? T.frost : T.ok; warn = storm || frost;
+    days = w.days.map((d, i) => ({ name: d.name, icon: wxIcon(wxCat(dl.weather_code[i])[1], 30), hi: Math.round(dl.temperature_2m_max[i]) + '°', lo: Math.round(dl.temperature_2m_min[i]) + '°', p: '%' + (dl.precipitation_probability_max[i] ?? '--') }));
+  }
+  const pct = (s) => v.lang === 'tr' ? s : s.replace(/^%(.*)$/, '$1%');
+  return '<section id="hava" class="wrap" style="padding-top:40px"><div class="card wx">' +
+    '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px"><h2 style="margin:0;font-family:var(--disp);font-size:26px;letter-spacing:-.01em">' + esc(w.title) + '</h2><span style="font-size:15px;color:var(--muted)">Konak, İzmir</span></div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center"><div style="flex:1 1 260px;display:flex;align-items:center;gap:20px">' + icon +
+      '<div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:var(--disp);font-weight:700;font-size:64px;line-height:1">' + esc(temp) + '</span><span style="font-size:18px;font-weight:600">' + esc(cond) + '</span></div></div>' +
+      '<div class="wx-tiles" style="flex:999 1 420px"><div class="tile"><span>' + esc(w.feels) + '</span><strong>' + esc(feels) + '</strong></div><div class="tile"><span>' + esc(w.wind) + '</span><strong>' + esc(wind) + '</strong></div><div class="tile"><span>' + esc(w.rain) + '</span><strong>' + esc(pct(rain)) + '</strong></div></div></div>' +
+    '<div class="wx-alert' + (warn ? ' warn' : '') + '" role="status">' + esc(alert) + '</div>' +
+    '<div class="wx-days">' + days.map((d) => '<div class="wx-day"><strong style="font-size:15px">' + esc(d.name) + '</strong>' + d.icon + '<span style="font-size:15px"><strong>' + esc(d.hi) + '</strong> <span style="color:var(--muted)">' + esc(d.lo) + '</span></span><span style="font-size:14px;font-weight:600;color:var(--blue)">' + esc(pct(d.p)) + '</span></div>').join('') + '</div>' +
+    '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)"><span>' + esc(w.footer.replace('[--:--]', time)) + '</span><span>' + esc(w.src) + '</span></div>' +
+  '</div></section>';
+}
+function notices(v) {
+  const a = v.ann;
+  return '<section id="duyurular" class="wrap sec"><p class="eyebrow">' + esc(a.eyebrow) + '</p><h2 class="h2" style="margin-bottom:32px">' + esc(a.title) + '</h2><div class="grid notices">' +
+    '<article style="background:var(--ink);color:#fff;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px"><span class="pill" style="color:var(--ink);background:#F39A5B">' + esc(a.tEvent) + '</span><span style="font-size:14px;color:#C3D0E0">' + esc(a.pDate) + '</span></div>' +
+      '<h3 style="margin:0;font-family:var(--disp);font-size:30px;letter-spacing:-.01em">' + esc(a.pTitle) + '</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#D6E0EC">' + esc(a.pBody) + '</p>' +
+      '<div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;background:var(--ink2);border:1px solid var(--line-d);font-size:15px">' + I.pin + '<span>Chinese Sushi Express · MAC Studio</span></div><span style="margin-top:auto;font-size:13px;color:#B8C6D9">Mahall Bomonti Toplu Yapı Yönetimi</span></article>' +
+    '<article class="card" style="border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px"><span class="pill" style="color:var(--blue);background:var(--blue-t)">' + esc(a.tOffice) + '</span><span style="font-size:14px;color:var(--muted)">' + esc(a.oDate) + '</span></div>' +
+      '<h3 style="margin:0;font-family:var(--disp);font-size:26px;letter-spacing:-.01em">' + esc(a.oTitle) + '</h3><p style="margin:0;font-size:16px;line-height:1.6;color:var(--body)">' + esc(a.oBody) + '</p>' +
+      '<ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px">' + a.contacts.map((c) => '<li class="contact"><span style="display:flex;flex-direction:column"><span style="font-size:13px;color:var(--muted)">' + esc(c.label) + '</span><strong style="font-size:16px;font-weight:600">' + esc(c.num) + '</strong></span><a class="btn btn-dark" style="min-height:40px;padding:0 14px" href="' + esc(c.href) + '">' + I.phone + esc(a.call) + '</a></li>').join('') + '</ul>' +
+      '<span style="margin-top:auto;font-size:13px;color:var(--muted)">Mahall Bomonti Toplu Yapı Yönetimi</span></article>' +
+  '</div></section>';
+}
+function transit(v) {
+  const t = v.t;
+  return '<section id="ulasim" class="wrap sec"><p class="eyebrow">' + esc(t.transitEyebrow) + '</p><h2 class="h2">' + esc(t.transitTitle) + '</h2><p class="lead">' + esc(t.transitSub) + '</p>' +
+    '<ol class="card route">' + v.route.map((r) => '<li><div style="display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;border-radius:50%;background:' + r.dot + ';flex:none"></span><span style="flex:1;height:2px;background:var(--line)"></span></div><strong style="font-size:16px">' + esc(r.name) + '</strong><span style="font-size:14px;color:var(--muted)">' + esc(r.time) + '</span></li>').join('') + '</ol>' +
+    '<div class="tabs" role="tablist" aria-label="' + esc(t.transitTitle) + '">' + v.tabs.map((tb) => '<button type="button" role="tab" class="chip" aria-selected="' + tb.active + '" ' + on(tb.pick) + '>' + esc(tb.label) + '</button>').join('') + '</div>' +
+    '<div class="card panel" role="tabpanel"><div style="flex:999 1 400px;min-width:0;display:flex;flex-direction:column;gap:12px"><h3 style="margin:0;font-family:var(--disp);font-size:26px">' + esc(v.cur.title) + '</h3><p style="margin:0;font-size:17px;line-height:1.6;color:var(--body)">' + esc(v.cur.body) + '</p><p style="margin:0;font-size:14px;color:var(--muted)">' + esc(t.liveNote) + '</p></div>' +
+    '<ul class="stops">' + v.cur.stops.map((s) => '<li>' + I.arrow + '<span>' + esc(s) + '</span></li>').join('') + '</ul></div></section>';
+}
+function shops(v) {
+  const t = v.t;
+  return '<section id="isletmeler" class="wrap sec"><p class="eyebrow">' + esc(t.shopsEyebrow) + '</p><h2 class="h2">' + esc(t.shopsTitle) + '</h2><p class="lead" style="margin-bottom:28px">' + esc(t.shopsSub) + '</p>' +
+    '<div role="group" aria-label="' + esc(t.filterLabel) + '" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">' + v.cats.map((c) => '<button type="button" class="chip blue" aria-pressed="' + c.active + '" ' + on(c.pick) + '>' + esc(c.label) + '</button>').join('') + '</div>' +
+    '<div class="grid shops">' + v.shops.map((s) => '<article class="card shop"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span class="pill" style="color:var(--blue);background:var(--blue-t)">' + esc(s.type) + '</span><span style="font-size:13px;color:var(--muted)">' + esc(s.catLabel) + '</span></div><h3 style="margin:0;font-size:19px;font-weight:600">' + esc(t.shopName) + '</h3><p style="margin:0;font-size:14px;color:var(--muted);line-height:1.5">' + esc(t.shopMeta) + '</p><div style="display:flex;gap:8px;margin-top:auto"><a class="btn btn-dark" style="flex:1" href="#">' + I.wa + 'WhatsApp</a><a class="btn btn-line" style="flex:1" href="#">' + esc(t.route) + '</a></div></article>').join('') + '</div>' +
+    '<div style="margin-top:24px;padding:24px 28px;border-radius:16px;background:#FFF3EA;border:1px solid #F3C9A8;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px"><div style="display:flex;flex-direction:column;gap:4px;flex:999 1 360px"><strong style="font-size:18px">' + esc(t.addShopTitle) + '</strong><span style="font-size:15px;color:#5A4636">' + esc(t.addShopSub) + '</span></div><a class="btn" style="min-height:48px;padding:0 24px;background:var(--orange-d);color:#fff" href="https://wa.me/90536666866" target="_blank" rel="noopener">' + esc(t.addShopCta) + '</a></div></section>';
+}
+function life(v) {
+  const t = v.t;
+  return '<section id="yasam" class="wrap sec"><p class="eyebrow">' + esc(t.lifeEyebrow) + '</p><h2 class="h2" style="margin-bottom:32px">' + esc(t.lifeTitle) + '</h2><div class="grid life">' +
+    v.life.map((l) => '<div class="card" style="padding:24px;display:flex;flex-direction:column;gap:10px"><span style="font-family:var(--disp);font-weight:700;font-size:30px;color:var(--blue)">' + esc(l.big) + '</span><h3 style="margin:0;font-size:18px;font-weight:600">' + esc(l.title) + '</h3><p style="margin:0;font-size:15px;color:var(--muted);line-height:1.55">' + esc(l.body) + '</p></div>').join('') + '</div></section>';
+}
+function events(v) {
+  const t = v.t;
+  return '<section id="etkinlik" class="wrap sec"><p class="eyebrow">' + esc(t.eventsEyebrow) + '</p><h2 class="h2" style="margin-bottom:32px">' + esc(t.eventsTitle) + '</h2><ul class="card events">' +
+    v.events.map((e) => '<li><div class="date"><div style="font-family:var(--disp);font-weight:700;font-size:22px">' + esc(e.day) + '</div><div style="font-size:12px;color:#C3D0E0">' + esc(e.month) + '</div></div><div style="flex:999 1 280px;display:flex;flex-direction:column;gap:4px"><strong style="font-size:17px">' + esc(e.title) + '</strong><span style="font-size:14px;color:var(--muted)">' + esc(e.place) + '</span></div><a class="btn btn-line" href="#duyurular">' + esc(t.eventMore) + '</a></li>').join('') + '</ul></section>';
+}
+function neighbours(v) {
+  const t = v.t;
+  return '<section id="komsular" class="wrap sec"><p class="eyebrow">' + esc(t.nbEyebrow) + '</p><h2 class="h2">' + esc(t.nbTitle) + '</h2><p class="lead">' + esc(t.nbSub) + '</p>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start"><div class="grid" style="flex:999 1 520px;min-width:0;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">' +
+    v.board.map((b) => '<article class="card" style="padding:20px;display:flex;flex-direction:column;gap:10px"><span class="pill" style="align-self:flex-start;color:var(--orange-d);background:#FFF3EA">' + esc(b.tag) + '</span><p style="margin:0;font-size:15px;line-height:1.5;color:var(--body)">' + esc(t.postText) + '</p><span style="font-size:13px;color:var(--muted)">' + esc(t.postMeta) + '</span></article>').join('') + '</div>' +
+    '<form class="post" onsubmit="return false"><h3 style="margin:0;font-family:var(--disp);font-size:22px">' + esc(t.formTitle) + '</h3><label for="nb-title" style="font-size:14px;color:#C3D0E0">' + esc(t.formLabelTitle) + '</label><input id="nb-title" type="text"><label for="nb-text" style="font-size:14px;color:#C3D0E0">' + esc(t.formLabelText) + '</label><textarea id="nb-text" rows="4" style="resize:vertical"></textarea><button type="submit" class="btn" style="min-height:48px;background:var(--orange);color:var(--ink);font-size:16px">' + esc(t.formSubmit) + '</button><p style="margin:0;font-size:13px;color:#B8C6D9;line-height:1.5">' + esc(t.formKvkk) + '</p></form></div></section>';
+}
+function history(v) {
+  const t = v.t;
+  return '<section class="wrap sec"><div class="card" style="border-radius:20px;padding:40px;display:flex;flex-wrap:wrap;gap:40px;align-items:center"><div style="flex:1 1 200px;display:flex;flex-direction:column;gap:4px"><span style="font-family:var(--disp);font-weight:700;font-size:72px;line-height:1;color:var(--orange-d)">1912</span><span style="font-size:15px;color:var(--muted)">' + esc(t.histSince) + '</span></div><div style="flex:999 1 480px;display:flex;flex-direction:column;gap:12px"><h2 style="margin:0;font-family:var(--disp);font-size:32px;letter-spacing:-.01em">' + esc(t.histTitle) + '</h2><p style="margin:0;font-size:17px;line-height:1.6;color:var(--body)">' + esc(t.histBody) + '</p></div></div></section>';
+}
+function foot(v) {
+  const t = v.t;
+  return '<footer><div class="wrap" style="padding-top:40px;padding-bottom:40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;font-size:14px;line-height:1.6"><div style="flex:999 1 420px;display:flex;flex-direction:column;gap:8px"><strong style="font-family:var(--disp);font-size:18px;color:#fff">Bomonti Komşu</strong><span>' + esc(t.disclaimer) + '</span></div><nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:4px 20px;align-items:flex-start"><a href="#">' + esc(t.fPrivacy) + '</a><a href="https://wa.me/905330635348" target="_blank" rel="noopener">' + esc(t.fContact) + '</a><a href="https://wa.me/905330635348" target="_blank" rel="noopener">WhatsApp</a></nav></div></footer>';
+}
+
+const NAV_WX = { tr: 'Hava', de: 'Wetter', en: 'Weather', ko: '날씨', es: 'Tiempo', fr: 'Météo', ru: 'Погода' };
+function render() {
+  H = [];
+  const v = comp.renderVals();
+  v.wx.navLabel = NAV_WX[v.lang] || NAV_WX.tr;
+  document.documentElement.lang = v.lang;
+  const focusedLang = document.activeElement && document.activeElement.closest && document.activeElement.closest('.lang');
+  document.getElementById('app').innerHTML = header(v) + '<main>' + hero(v) + quick(v) + weather(v) + notices(v) + transit(v) + shops(v) + life(v) + events(v) + neighbours(v) + history(v) + '</main>' + foot(v);
+  if (focusedLang) { const b = document.querySelector('.lang-btn'); if (b) b.focus(); }
+}
+render();
+loadWeather();
+setInterval(loadWeather, 15 * 60 * 1000);
+</script>
+</body>
+</html>
