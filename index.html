@@ -524,7 +524,16 @@ class Component extends DCLogic {
         oDate: 'Закрыт до пятницы', oTitle: 'Офис закрыт в День Республики', oBody: 'В связи с Днём Республики 29 октября офис закрыт до пятницы. При необходимости звоните по этим номерам.',
         c: ['Офис A1', 'Блок A1', 'Блок A2', 'Начальник смены охраны'] }
     };
-    const A = ANN[lang];
+    const FEST = {
+      tr: { pTitle: 'Halloween kostüm partisi', fTag: 'Çocuk etkinliği', fDate: '29 Ekim 2026, Perşembe · 19.00 ve 20.00', fTitle: 'Paw Patrol Kış Festivali', fBody: 'Mahall Bomonti İzmir’de çocuklar için Paw Patrol gösterisi. Oyunun sonunda ücretsiz kar partisi.' },
+      de: { pTitle: 'Halloween-Kostümparty', fTag: 'Kinder-Event', fDate: 'Do., 29. Oktober 2026 · 19:00 und 20:00 Uhr', fTitle: 'Paw Patrol Winterfestival', fBody: 'Paw-Patrol-Show für Kinder im Mahall Bomonti İzmir. Nach der Vorstellung gibt es eine kostenlose Schneeparty.' },
+      en: { pTitle: 'Halloween costume party', fTag: 'Kids’ event', fDate: 'Thu 29 October 2026 · 7:00 pm and 8:00 pm', fTitle: 'Paw Patrol Winter Festival', fBody: 'A Paw Patrol show for children at Mahall Bomonti İzmir. Free snow party after the show.' },
+      ko: { pTitle: '할로윈 코스튬 파티', fTag: '어린이 행사', fDate: '2026년 10월 29일 (목) · 19:00, 20:00', fTitle: 'Paw Patrol 겨울 축제', fBody: 'Mahall Bomonti İzmir에서 열리는 어린이를 위한 Paw Patrol 공연. 공연이 끝나면 무료 눈 파티가 이어집니다.' },
+      es: { pTitle: 'Fiesta de disfraces de Halloween', fTag: 'Para niños', fDate: 'Jueves 29 de octubre de 2026 · 19:00 y 20:00', fTitle: 'Festival de invierno de Paw Patrol', fBody: 'Espectáculo de Paw Patrol para niños en Mahall Bomonti İzmir. Al final, fiesta de nieve gratuita.' },
+      fr: { pTitle: 'Soirée déguisée d’Halloween', fTag: 'Pour les enfants', fDate: 'Jeudi 29 octobre 2026 · 19 h et 20 h', fTitle: 'Festival d’hiver Paw Patrol', fBody: 'Spectacle Paw Patrol pour les enfants à Mahall Bomonti İzmir. Fête de la neige gratuite à la fin du spectacle.' },
+      ru: { pTitle: 'Костюмированная вечеринка на Хэллоуин', fTag: 'Для детей', fDate: 'Четверг, 29 октября 2026 · 19:00 и 20:00', fTitle: 'Зимний фестиваль Paw Patrol', fBody: 'Шоу Paw Patrol для детей в Mahall Bomonti İzmir. После спектакля — бесплатная снежная вечеринка.' }
+    };
+    const A = Object.assign({}, ANN[lang], FEST[lang]);
     const NUMS = [['0533 063 54 03', '+905330635403'], ['0533 063 57 85', '+905330635785'], ['0531 289 90 34', '+905312899034'], ['0533 063 68 37', '+905330636837']];
     const ann = { ...A, contacts: NUMS.map((n, i) => ({ label: A.c[i], num: n[0], href: 'tel:' + n[1] })) };
     const stats = ['242 m', '60', D.min, '20.000+ m²'].map((v, i) => ({ value: v, label: D.stats[i] }));
@@ -552,8 +561,8 @@ class Component extends DCLogic {
       .filter((s) => cat === 'all' || s.c === cat);
 
     const life = D.life.map((l) => ({ big: l[0], title: l[1], body: l[2] }));
-    const events = [{ day: '30', month: A.mon, title: A.pTitle, place: 'Chinese Sushi Express · 20:00' }]
-      .concat([1, 2].map(() => ({ day: D.ev[0], month: D.ev[1], title: D.ev[2], place: D.ev[3] })));
+    const events = [{ day: '29', month: A.mon, title: A.fTitle, place: 'Mahall Bomonti · 19:00 / 20:00' }, { day: '30', month: A.mon, title: A.pTitle, place: 'Chinese Sushi Express · 20:00' }]
+      .concat([1].map(() => ({ day: D.ev[0], month: D.ev[1], title: D.ev[2], place: D.ev[3] })));
     const board = D.board.map((tag) => ({ tag }));
 
     return { wx, ann, lang, langs, langOpen, curCode, toggleLang, t: D.t, stats, quick, route, tabs, cur: D.tabs[tab], cats, shops, life, events, board };
@@ -691,6 +700,9 @@ function weather(v) {
 function notices(v) {
   const a = v.ann;
   return '<section id="duyurular" class="wrap sec"><p class="eyebrow">' + esc(a.eyebrow) + '</p><h2 class="h2" style="margin-bottom:32px">' + esc(a.title) + '</h2><div class="grid notices">' +
+    '<article style="background:#1F3F73;color:#fff;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px"><span class="pill" style="color:#0E1A2B;background:#BFE0FF">' + esc(a.fTag) + '</span><span style="font-size:14px;color:#D2E2F5">' + esc(a.fDate) + '</span></div>' +
+      '<h3 style="margin:0;font-family:var(--disp);font-size:30px;letter-spacing:-.01em">' + esc(a.fTitle) + '</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#E2ECF8">' + esc(a.fBody) + '</p>' +
+      '<div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;background:#183460;border:1px solid #2E5590;font-size:15px">' + I.pin + '<span>Mahall Bomonti İzmir</span></div></article>' +
     '<article style="background:var(--ink);color:#fff;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px"><span class="pill" style="color:var(--ink);background:#F39A5B">' + esc(a.tEvent) + '</span><span style="font-size:14px;color:#C3D0E0">' + esc(a.pDate) + '</span></div>' +
       '<h3 style="margin:0;font-family:var(--disp);font-size:30px;letter-spacing:-.01em">' + esc(a.pTitle) + '</h3><p style="margin:0;font-size:16px;line-height:1.6;color:#D6E0EC">' + esc(a.pBody) + '</p>' +
       '<div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;background:var(--ink2);border:1px solid var(--line-d);font-size:15px">' + I.pin + '<span>Chinese Sushi Express · MAC Studio</span></div><span style="margin-top:auto;font-size:13px;color:#B8C6D9">Mahall Bomonti Toplu Yapı Yönetimi</span></article>' +
