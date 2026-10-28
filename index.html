@@ -52,7 +52,12 @@ nav.main a:hover{color:#fff}
 .lang-menu small{font-size:12px;color:var(--muted)}
 @media (max-width:860px){nav.main{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap}nav.main a{white-space:nowrap}}
 /* hero */
-.hero{background:var(--ink);color:#fff;overflow:hidden}
+#bg{position:fixed;inset:0;z-index:-1;background:var(--ink);overflow:hidden}
+#bg video{width:100%;height:100%;object-fit:cover;display:block}
+.hero{background:rgba(14,26,43,.58);color:#fff;overflow:hidden}
+.hero h1,.hero p.sub{text-shadow:0 2px 16px rgba(0,0,0,.35)}
+.below{background:var(--ground);padding-bottom:1px}
+@media (prefers-reduced-motion:reduce){#bg video{display:none}}
 .hero-in{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding-top:72px;padding-bottom:56px}
 .hero-txt{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px}
 .hero h1{margin:0;font-family:var(--disp);font-weight:700;font-size:clamp(40px,6vw,72px);line-height:1.02;letter-spacing:-.02em}
@@ -60,8 +65,8 @@ nav.main a:hover{color:#fff}
 .hero-media{flex:1 1 360px;min-width:0;margin:0;aspect-ratio:9/12;max-height:520px;border-radius:20px;background:var(--ink2);border:1px solid var(--line-d);position:relative;display:flex;align-items:flex-end;overflow:hidden}
 .hero-media svg.bg,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-media figcaption{position:relative;margin:16px;width:100%;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;background:var(--ink);border:1px dashed #4A6080;color:#D6E0EC;font-size:14px}
-.stats{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line-d);border:1px solid var(--line-d);border-radius:16px;overflow:hidden}
-.stats div{background:var(--ink);padding:24px;display:flex;flex-direction:column-reverse;gap:4px}
+.stats{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(42,61,88,.7);border:1px solid var(--line-d);border-radius:16px;overflow:hidden;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.stats div{background:rgba(14,26,43,.82);padding:24px;display:flex;flex-direction:column-reverse;gap:4px}
 .stats dt{font-size:14px;color:#B8C6D9}.stats dd{margin:0;font-family:var(--disp);font-weight:700;font-size:36px}
 /* quick */
 .quick{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
@@ -94,11 +99,13 @@ nav.main a:hover{color:#fff}
 .contact{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--ground)}
 form.post{flex:1 1 320px;background:var(--ink);color:#fff;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px}
 form.post input,form.post textarea{border-radius:10px;border:1px solid #3B5578;background:var(--ink2);color:#fff;padding:12px;font:16px var(--sans)}
-footer{margin-top:88px;background:var(--ink);color:#C3D0E0}
+footer{background:var(--ink);color:#C3D0E0}
 footer a{color:#D6E0EC;padding:10px 0}
 </style>
 </head>
 <body>
+<!-- Arka plan videosu: bomonti.mp4 (ve isteğe bağlı bomonti.jpg) dosyalarını index.html ile aynı klasöre koyun -->
+<div id="bg" aria-hidden="true"><video autoplay muted loop playsinline preload="auto" poster="bomonti.jpg"><source src="bomonti.mp4" type="video/mp4"></video></div>
 <div id="app"></div>
 <script>
 /* ---- Minimal runtime: the page's data and logic live in Component below ---- */
@@ -639,14 +646,9 @@ function header(v) {
 function hero(v) {
   const t = v.t;
   return '<section id="top" class="hero"><div class="wrap hero-in">' +
-    '<div class="hero-txt"><p style="margin:0;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F39A5B">Konak · Halkapınar · İzmir</p>' +
+    '<div class="hero-txt" style="padding:56px 0 32px"><p style="margin:0;font-size:14px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F39A5B">Konak · Halkapınar · İzmir</p>' +
     '<h1>' + esc(t.heroTitle) + '</h1><p class="sub">' + esc(t.heroSub) + '</p>' +
     '<div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:8px"><a href="#isletmeler" class="btn" style="min-height:48px;padding:0 24px;background:#E8772E;color:#0E1A2B">' + esc(t.ctaShops) + '</a><a href="#ulasim" class="btn" style="min-height:48px;padding:0 24px;border:1px solid #4A6080;color:#fff">' + esc(t.ctaTransit) + '</a></div></div>' +
-    '<figure class="hero-media">' +
-      /* Drone video: put bomonti.mp4 next to index.html and replace the <svg class="bg"> below with:
-         <video class="bg" src="bomonti.mp4" autoplay muted loop playsinline poster="bomonti.jpg"></video> */
-      '<svg class="bg" viewBox="0 0 300 420" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><path d="M0 360 Q75 340 150 352 T300 346 V420 H0Z" fill="#1B3350"/><path d="M134 360V70l16-34 16 34v290Z" fill="#20365A" stroke="#E8772E" stroke-width="1.5"/><path d="M142 100h16M142 130h16M142 160h16M142 190h16M142 220h16M142 250h16M142 280h16M142 310h16" stroke="#5B7BA6" stroke-width="2"/><rect x="60" y="300" width="50" height="60" fill="#1A2E4A" stroke="#3B5578"/><rect x="190" y="290" width="60" height="70" fill="#1A2E4A" stroke="#3B5578"/></svg>' +
-      '<figcaption>' + I.play + '<span>' + esc(t.videoLabel) + '</span></figcaption></figure>' +
   '</div><div class="wrap" style="padding-bottom:56px"><dl class="stats">' +
     v.stats.map((s) => '<div><dt>' + esc(s.label) + '</dt><dd>' + esc(s.value) + '</dd></div>').join('') +
   '</dl></div></section>';
@@ -745,7 +747,7 @@ function render() {
   v.wx.navLabel = NAV_WX[v.lang] || NAV_WX.tr;
   document.documentElement.lang = v.lang;
   const focusedLang = document.activeElement && document.activeElement.closest && document.activeElement.closest('.lang');
-  document.getElementById('app').innerHTML = header(v) + '<main>' + hero(v) + quick(v) + weather(v) + notices(v) + transit(v) + shops(v) + life(v) + events(v) + neighbours(v) + history(v) + '</main>' + foot(v);
+  document.getElementById('app').innerHTML = header(v) + '<main>' + hero(v) + '<div class="below">' + quick(v) + weather(v) + notices(v) + transit(v) + shops(v) + life(v) + events(v) + neighbours(v) + history(v) + '<div style="height:88px"></div></div></main>' + foot(v);
   if (focusedLang) { const b = document.querySelector('.lang-btn'); if (b) b.focus(); }
 }
 render();
