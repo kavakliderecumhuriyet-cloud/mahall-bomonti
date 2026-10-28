@@ -154,8 +154,8 @@ class Component extends DCLogic {
 
     const WA_YONETIM = 'https://wa.me/905330635348';
     const WA_DOGAN = 'https://wa.me/905056413739';
-    const WA_OZKAN = 'https://wa.me/90536666866';
-    const PH = { yon: '+90 533 063 53 48', dog: '+90 505 641 37 39', ozk: '+90 536 666 866' };
+    const WA_OZKAN = 'https://wa.me/905366668666';
+    const PH = { yon: '+90 533 063 53 48', dog: '+90 505 641 37 39', ozk: '+90 536 666 86 66' };
     const STOP_M = ['Konak · Çankaya', 'Üçyol · Fahrettin Altay', 'Bornova · Ege Üniversitesi'];
 
     const L = {
@@ -783,7 +783,7 @@ function shops(v) {
   return '<section id="isletmeler" class="wrap sec"><p class="eyebrow">' + esc(t.shopsEyebrow) + '</p><h2 class="h2">' + esc(t.shopsTitle) + '</h2><p class="lead" style="margin-bottom:28px">' + esc(t.shopsSub) + '</p>' +
     '<div role="group" aria-label="' + esc(t.filterLabel) + '" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">' + v.cats.map((c) => '<button type="button" class="chip blue" aria-pressed="' + c.active + '" ' + on(c.pick) + '>' + esc(c.label) + '</button>').join('') + '</div>' +
     '<div class="grid shops">' + v.shops.map((s) => '<article class="card shop"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span class="pill" style="color:var(--blue);background:var(--blue-t)">' + esc(s.type) + '</span><span style="font-size:13px;color:var(--muted)">' + esc(s.catLabel) + '</span></div><h3 style="margin:0;font-size:19px;font-weight:600">' + esc(t.shopName) + '</h3><p style="margin:0;font-size:14px;color:var(--muted);line-height:1.5">' + esc(t.shopMeta) + '</p><div style="display:flex;gap:8px;margin-top:auto"><a class="btn btn-dark" style="flex:1" href="#">' + I.wa + 'WhatsApp</a><a class="btn btn-line" style="flex:1" href="#">' + esc(t.route) + '</a></div></article>').join('') + '</div>' +
-    '<div style="margin-top:24px;padding:24px 28px;border-radius:16px;background:#FFF3EA;border:1px solid #F3C9A8;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px"><div style="display:flex;flex-direction:column;gap:4px;flex:999 1 360px"><strong style="font-size:18px">' + esc(t.addShopTitle) + '</strong><span style="font-size:15px;color:#5A4636">' + esc(t.addShopSub) + '</span></div><a class="btn" style="min-height:48px;padding:0 24px;background:var(--orange-d);color:#fff" href="https://wa.me/90536666866" target="_blank" rel="noopener">' + esc(t.addShopCta) + '</a></div></section>';
+    '<div style="margin-top:24px;padding:24px 28px;border-radius:16px;background:#FFF3EA;border:1px solid #F3C9A8;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px"><div style="display:flex;flex-direction:column;gap:4px;flex:999 1 360px"><strong style="font-size:18px">' + esc(t.addShopTitle) + '</strong><span style="font-size:15px;color:#5A4636">' + esc(t.addShopSub) + '</span></div><a class="btn" style="min-height:48px;padding:0 24px;background:var(--orange-d);color:#fff" href="https://wa.me/905366668666" target="_blank" rel="noopener">' + esc(t.addShopCta) + '</a></div></section>';
 }
 function life(v) {
   const t = v.t;
